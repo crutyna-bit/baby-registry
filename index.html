@@ -1,0 +1,1680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Baby Rutyna · Our Registry</title>
+<meta name="description" content="A little registry to welcome our baby — thank you for being part of our story." />
+
+<!-- ============================================================
+     CONFIG — edit these three values, then save & redeploy.
+     ============================================================ -->
+<script>
+window.REGISTRY_CONFIG = {
+  // 1) Paste your Formspree endpoint here (e.g. "https://formspree.io/f/abcd1234").
+  //    Set up a free account at https://formspree.io and add BOTH addresses
+  //    (christophe.rutyna@gmail.com and czeppet@gmail.com) as recipients.
+  formspreeEndpoint: "https://formspree.io/f/REPLACE_ME",
+
+  // 2) Admin password — used to unlock the editing panel. Change this!
+  //    Open /registry.html?admin=1 to see the unlock prompt.
+  adminPassword: "rutyna2026",
+
+  // 3) Parents' names + due date (purely cosmetic, shown in the hero).
+  parents: "Christina & Christophe",
+  dueDate: "Coming 2026",
+};
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     Design tokens — soft & modern (sage / cream / neutrals)
+     ========================================================= */
+  :root {
+    --bg:        #F7F4EE;   /* warm cream */
+    --bg-alt:    #EFEBE2;
+    --surface:   #FFFFFF;
+    --ink:       #2A2E27;   /* deep forest ink */
+    --ink-soft:  #5A5F55;
+    --ink-mute:  #8A8F84;
+    --line:      #E5E0D5;
+    --sage:      #8FA68E;
+    --sage-d:    #6F8770;
+    --sage-l:    #D4DDCB;
+    --terra:     #B6755A;   /* warm action accent */
+    --terra-d:   #8E5A45;
+    --gold:      #C8A96A;
+    --rose:      #D9B7A8;
+    --shadow:    0 1px 2px rgba(42,46,39,.04), 0 8px 24px rgba(42,46,39,.06);
+    --radius:    14px;
+    --radius-sm: 10px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .serif { font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif; }
+
+  a { color: var(--ink); }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* =========================================================
+     Layout
+     ========================================================= */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  /* Top bar */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 24px; max-width: 1180px; margin: 0 auto;
+  }
+  .brandmark {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; letter-spacing: .01em;
+  }
+  .brandmark .dot {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-l) 100%);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: white; font-size: 12px;
+  }
+  .topbar-actions { display: flex; gap: 10px; align-items: center; font-size: 13px; color: var(--ink-soft); }
+  .topbar-actions a { color: var(--ink-soft); text-decoration: none; }
+  .topbar-actions a:hover { color: var(--ink); }
+
+  /* Language toggle */
+  .lang-toggle {
+    display: inline-flex; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 3px; gap: 2px;
+  }
+  .lang-btn {
+    border: 0; background: transparent;
+    padding: 4px 12px; border-radius: 999px;
+    font-family: inherit; font-size: 12px; font-weight: 500;
+    letter-spacing: .04em; color: var(--ink-mute);
+    cursor: pointer; transition: all .15s ease;
+  }
+  .lang-btn:hover { color: var(--ink); }
+  .lang-btn.active {
+    background: var(--ink); color: var(--bg);
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 24px 50px;
+    position: relative;
+  }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .22em; font-size: 11px;
+    color: var(--ink-mute); margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 7vw, 78px);
+    line-height: 1.02;
+    margin: 0 0 18px;
+    letter-spacing: -.02em;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--sage-d);
+    font-feature-settings: "ss01";
+  }
+  .hero p.lede {
+    max-width: 620px; margin: 0 auto 28px;
+    color: var(--ink-soft); font-size: 17px;
+  }
+  .hero .meta {
+    display: inline-flex; gap: 20px; align-items: center;
+    color: var(--ink-mute); font-size: 13px;
+    padding: 10px 18px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface);
+  }
+  .hero .meta strong { color: var(--ink); font-weight: 500; }
+  .hero .meta .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+
+  /* Decorative ornament */
+  .ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; color: var(--sage); margin: 22px auto 0;
+  }
+  .ornament .line { width: 60px; height: 1px; background: currentColor; opacity: .5; }
+
+  /* Tabs */
+  .tabs {
+    display: flex; justify-content: center; gap: 8px;
+    margin: 0 auto 36px;
+    background: var(--surface);
+    padding: 6px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    width: fit-content;
+  }
+  .tab {
+    border: 0; background: transparent;
+    padding: 10px 22px; border-radius: 999px;
+    font-size: 14px; font-weight: 500; color: var(--ink-soft);
+    transition: all .2s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .tab .flag { font-size: 16px; }
+  .tab:hover { color: var(--ink); }
+  .tab.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* Filter row */
+  .toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; gap: 16px; flex-wrap: wrap;
+  }
+  .toolbar .summary { color: var(--ink-soft); font-size: 14px; }
+  .toolbar .summary strong { color: var(--ink); font-weight: 500; }
+  .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill {
+    border: 1px solid var(--line); background: var(--surface);
+    padding: 6px 14px; border-radius: 999px; font-size: 13px;
+    color: var(--ink-soft); transition: all .15s ease;
+  }
+  .pill:hover { border-color: var(--sage); color: var(--ink); }
+  .pill.active { background: var(--sage-l); border-color: var(--sage); color: var(--ink); }
+
+  /* Grid */
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+
+  /* Card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease;
+    position: relative;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .card.reserved { opacity: .72; }
+
+  .card-img {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg) 100%);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-img svg { width: 64%; height: 64%; opacity: .55; color: var(--sage-d); }
+  .card-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(6px);
+    border: 1px solid var(--line);
+    border-radius: 999px; padding: 4px 10px;
+    font-size: 11px; font-weight: 500; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: .08em;
+  }
+  .card-reserved-tag {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--sage-d); color: white;
+    border-radius: 999px; padding: 4px 12px;
+    font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .08em;
+  }
+
+  .card-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+  .card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px; font-weight: 500; line-height: 1.25;
+    margin: 0 0 6px; letter-spacing: -.005em;
+  }
+  .card-desc {
+    font-size: 14px; color: var(--ink-soft);
+    margin: 0 0 16px; line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line);
+    gap: 10px;
+  }
+  .price {
+    font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500;
+    color: var(--ink);
+  }
+  .price small { font-size: 12px; color: var(--ink-mute); margin-left: 4px; }
+
+  .card-actions {
+    display: flex; gap: 8px; padding: 0 20px 20px;
+  }
+  .btn {
+    flex: 1; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    padding: 11px 14px; border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 500;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    text-decoration: none;
+    transition: all .15s ease;
+  }
+  .btn:hover { border-color: var(--ink); }
+  .btn-primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .btn-primary:hover { background: var(--terra-d); border-color: var(--terra-d); }
+  .btn-primary[disabled] { background: var(--ink-mute); border-color: var(--ink-mute); cursor: not-allowed; }
+  .btn-icon { width: 16px; height: 16px; }
+
+  /* Footer */
+  footer {
+    margin-top: 80px; padding: 50px 24px 60px;
+    text-align: center; color: var(--ink-mute); font-size: 14px;
+    border-top: 1px solid var(--line);
+  }
+  footer .heart { color: var(--terra); }
+
+  /* =========================================================
+     Modal
+     ========================================================= */
+  .modal-bg {
+    position: fixed; inset: 0;
+    background: rgba(42,46,39,.45);
+    backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 50; padding: 20px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: var(--radius);
+    width: 100%; max-width: 480px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(42,46,39,.25);
+  }
+  .modal-header {
+    padding: 24px 28px 16px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .modal-header h2 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 24px; margin: 0; letter-spacing: -.01em;
+  }
+  .modal-header p {
+    color: var(--ink-soft); margin: 6px 0 0; font-size: 14px;
+  }
+  .modal-close {
+    position: absolute; top: 18px; right: 18px;
+    border: 0; background: transparent; color: var(--ink-mute);
+    font-size: 22px; line-height: 1; padding: 4px;
+  }
+  .modal-body { padding: 22px 28px 28px; }
+  .modal-body label {
+    display: block; font-size: 13px; font-weight: 500;
+    margin-bottom: 6px; color: var(--ink-soft);
+  }
+  .modal-body input, .modal-body textarea, .modal-body select {
+    width: 100%; padding: 11px 14px;
+    border: 1px solid var(--line); border-radius: var(--radius-sm);
+    font-family: inherit; font-size: 14px; background: var(--bg);
+    margin-bottom: 16px; color: var(--ink);
+    transition: border-color .15s ease;
+  }
+  .modal-body input:focus, .modal-body textarea:focus, .modal-body select:focus {
+    outline: 0; border-color: var(--sage-d); background: white;
+  }
+  .modal-body textarea { resize: vertical; min-height: 80px; }
+  .modal-body .item-preview {
+    display: flex; gap: 14px; align-items: center;
+    background: var(--bg);
+    padding: 12px; border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+  }
+  .modal-body .item-preview .thumb {
+    width: 56px; height: 56px; border-radius: 8px;
+    background: var(--bg-alt); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .modal-body .item-preview .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .modal-body .item-preview .thumb svg { width: 60%; height: 60%; color: var(--sage-d); opacity: .6; }
+  .modal-body .item-preview h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; margin: 0; }
+  .modal-body .item-preview .price-sm { color: var(--ink-soft); font-size: 13px; }
+
+  .modal-footer { display: flex; gap: 10px; }
+  .modal-footer .btn { padding: 12px 16px; }
+
+  /* Success state */
+  .success-state {
+    text-align: center; padding: 30px 20px;
+  }
+  .success-state .check {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--sage-l); color: var(--sage-d);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 32px; margin-bottom: 18px;
+  }
+  .success-state h3 {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 24px;
+    margin: 0 0 10px;
+  }
+  .success-state p { color: var(--ink-soft); margin: 0; }
+
+  /* =========================================================
+     Admin panel
+     ========================================================= */
+  .admin-bar {
+    background: var(--ink); color: var(--bg);
+    padding: 10px 24px; font-size: 13px;
+    display: none; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 30;
+  }
+  .admin-bar.visible { display: flex; }
+  .admin-bar .badge {
+    background: var(--terra); color: white;
+    padding: 3px 10px; border-radius: 999px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: .12em;
+    margin-right: 12px;
+  }
+  .admin-bar button {
+    background: transparent; border: 1px solid rgba(247,244,238,.25);
+    color: var(--bg); padding: 5px 12px; border-radius: 6px;
+    font-size: 12px; margin-left: 6px;
+  }
+  .admin-bar button:hover { background: rgba(247,244,238,.1); }
+  .admin-bar button.primary { background: var(--terra); border-color: var(--terra); }
+  .admin-bar button.primary:hover { background: var(--terra-d); }
+
+  .admin-controls { display: none; padding: 0 0 16px; }
+  .admin-controls.visible { display: flex; gap: 8px; flex-wrap: wrap; }
+  .admin-controls .pill { cursor: pointer; }
+
+  .admin-card-actions {
+    display: none;
+    position: absolute; bottom: 8px; right: 8px; gap: 4px; z-index: 2;
+  }
+  body.admin .admin-card-actions { display: flex; }
+  .icon-btn {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: white; border: 1px solid var(--line);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--ink-soft); font-size: 14px;
+  }
+  .icon-btn:hover { color: var(--ink); border-color: var(--ink); }
+  .icon-btn.danger:hover { color: #b94a4a; border-color: #b94a4a; }
+
+  /* Edit modal — wider + scrollable so Save is always reachable */
+  .modal.lg {
+    max-width: 760px;
+    max-height: 92vh;
+    display: flex; flex-direction: column;
+  }
+  .modal.lg .modal-body {
+    overflow-y: auto;
+    padding: 18px 28px 22px;
+  }
+  .modal.lg .modal-header { flex-shrink: 0; padding: 18px 28px 14px; }
+  .modal.lg .modal-header h2 { font-size: 22px; }
+  .modal.lg label {
+    margin-bottom: 4px; margin-top: 2px;
+  }
+  .modal.lg input, .modal.lg textarea, .modal.lg select {
+    margin-bottom: 12px;
+    padding: 9px 12px;
+  }
+  .modal.lg textarea {
+    min-height: 58px;
+  }
+  .modal.lg .hint { margin: -10px 0 10px; }
+  .modal.lg .modal-footer {
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    position: sticky; bottom: 0;
+    background: var(--surface);
+    margin-left: -28px; margin-right: -28px; margin-bottom: -22px;
+    padding-left: 28px; padding-right: 28px; padding-bottom: 16px;
+  }
+  .modal.lg .checkbox-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    margin: 4px 0 4px;
+    font-size: 13px;
+  }
+  .modal.lg .checkbox-row label {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: var(--radius-sm); padding: 8px 12px;
+    cursor: pointer; margin: 0;
+  }
+  .modal.lg .checkbox-row input { width: auto; margin: 0; }
+
+  /* Autofill */
+  .autofill {
+    background: linear-gradient(135deg, var(--sage-l) 0%, var(--bg-alt) 100%);
+    border: 1px solid var(--sage);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 16px;
+  }
+  .autofill-head { font-size: 13px; color: var(--ink); margin-bottom: 2px; }
+  .autofill-hint { font-size: 12px; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.45; }
+  .autofill-row { display: flex; gap: 8px; }
+  .autofill-row input {
+    flex: 1; padding: 9px 12px; border: 1px solid var(--line);
+    border-radius: var(--radius-sm); font: inherit; background: white;
+    margin-bottom: 0;
+  }
+  .autofill-row input:focus { outline: 0; border-color: var(--sage-d); }
+  .autofill-row .btn { flex: 0 0 auto; padding: 9px 18px; }
+  .autofill-status {
+    font-size: 12px; margin-top: 8px; min-height: 0;
+    color: var(--ink-soft);
+  }
+  .autofill-status:empty { display: none; }
+  .autofill-status.ok { color: var(--sage-d); }
+  .autofill-status.err { color: var(--terra-d); }
+
+  /* Helpers */
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hint { font-size: 12px; color: var(--ink-mute); margin: -10px 0 14px; }
+
+  /* Empty state */
+  .empty {
+    text-align: center; padding: 80px 20px;
+    color: var(--ink-mute);
+    background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius);
+  }
+  .empty h3 { font-family: 'Fraunces', serif; color: var(--ink); margin: 12px 0 6px; font-weight: 400; }
+
+  /* Toast */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%);
+    background: var(--ink); color: var(--bg);
+    padding: 12px 20px; border-radius: 999px;
+    font-size: 14px; z-index: 100;
+    transition: transform .3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  }
+  .toast.visible { transform: translateX(-50%) translateY(0); }
+
+  /* Print */
+  @media print {
+    .topbar, .tabs, .toolbar, .card-actions, footer, .admin-bar, .admin-controls { display: none !important; }
+    .card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==============================================================
+     ADMIN BAR
+     ============================================================== -->
+<div class="admin-bar" id="adminBar">
+  <div>
+    <span class="badge">Admin</span>
+    <span id="adminStatus">You're editing the registry. Add, edit, or remove items.</span>
+  </div>
+  <div>
+    <button id="adminAdd" class="primary">+ Add item</button>
+    <button id="adminExport">Export updated HTML</button>
+    <button id="adminLogout">Exit admin</button>
+  </div>
+</div>
+
+<!-- ==============================================================
+     TOP BAR
+     ============================================================== -->
+<header class="topbar">
+  <div class="brandmark">
+    <span class="dot">·</span>
+    <span>Baby <em class="serif" style="font-style: italic;">Rutyna</em></span>
+  </div>
+  <div class="topbar-actions">
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" class="lang-btn active">EN</button>
+      <button type="button" data-lang="fr" class="lang-btn">FR</button>
+    </div>
+    <span style="opacity:.4">·</span>
+    <a href="#" id="topPrint" data-i18n="topPrint">Print list</a>
+    <span style="opacity:.4">·</span>
+    <a href="?admin=1" id="topAdmin" data-i18n="topAdmin">Admin</a>
+  </div>
+</header>
+
+<!-- ==============================================================
+     HERO
+     ============================================================== -->
+<section class="hero">
+  <div class="eyebrow" data-i18n="eyebrow">Welcome — Bienvenue</div>
+  <h1 data-i18n-html="heroTitle">A small list for <br/><em>our little one.</em></h1>
+  <p class="lede" data-i18n="heroLede">
+    We're so grateful to have you in our lives. If you'd like to mark this season with a gift,
+    here are a few things on our list — split between Canada and France so you can shop where it's easiest.
+  </p>
+  <div class="meta">
+    <span><strong id="parentsLabel">Chris & Cz</strong></span>
+    <span class="sep"></span>
+    <span id="dueLabel">Coming 2026</span>
+  </div>
+  <div class="ornament" aria-hidden="true">
+    <div class="line"></div>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/>
+    </svg>
+    <div class="line"></div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- Tabs -->
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-region="CA" role="tab">
+      <span class="flag">🇨🇦</span> <span data-i18n="canada">Canada</span>
+    </button>
+    <button class="tab" data-region="FR" role="tab">
+      <span class="flag">🇫🇷</span> <span data-i18n="france">France</span>
+    </button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="summary" id="summary"></div>
+    <div class="filter-pills" id="filterPills"></div>
+  </div>
+
+  <!-- Admin add controls (only visible in admin mode) -->
+  <div class="admin-controls" id="adminControls"></div>
+
+  <!-- Grid -->
+  <div class="grid" id="grid"></div>
+
+</main>
+
+<footer>
+  <p><span data-i18n="footerThanks">Thank you for celebrating with us</span> <span class="heart">♡</span></p>
+  <p style="margin-top:6px; font-size:12px;">
+    <span data-i18n="footerQuestions">Questions? Email</span>
+    <a href="mailto:christophe.rutyna@gmail.com">christophe.rutyna@gmail.com</a>.
+  </p>
+</footer>
+
+<!-- ==============================================================
+     RESERVE MODAL
+     ============================================================== -->
+<div class="modal-bg" id="reserveModalBg">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div id="reserveFormView">
+      <div class="modal-header">
+        <h2 class="serif" data-i18n="rTitle">Reserve this gift</h2>
+        <p data-i18n="rSub">We'll get a little email so we know not to expect duplicates. Thank you!</p>
+        <button class="modal-close" aria-label="Close" data-close>×</button>
+      </div>
+      <div class="modal-body">
+        <div class="item-preview" id="reservePreview"></div>
+        <form id="reserveForm">
+          <label for="gifterName" data-i18n="rName">Your name</label>
+          <input id="gifterName" name="gifterName" type="text" required data-i18n-ph="rNamePh" placeholder="Aunt Marie" autocomplete="name" />
+
+          <label for="gifterEmail"><span data-i18n="rEmail">Your email</span> <span style="color:var(--ink-mute); font-weight:400;" data-i18n="rEmailHint">(optional — so we can thank you)</span></label>
+          <input id="gifterEmail" name="gifterEmail" type="email" data-i18n-ph="rEmailPh" placeholder="you@example.com" autocomplete="email" />
+
+          <label for="gifterNote"><span data-i18n="rNote">A little note</span> <span style="color:var(--ink-mute); font-weight:400;" data-i18n="rOpt">(optional)</span></label>
+          <textarea id="gifterNote" name="gifterNote" data-i18n-ph="rNotePh" placeholder="Sending so much love…"></textarea>
+
+          <div class="modal-footer">
+            <button type="button" class="btn" data-close data-i18n="cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="reserveSubmit">
+              <span data-i18n="rSubmit">Reserve gift</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="reserveSuccessView" style="display:none;">
+      <div class="modal-header"><button class="modal-close" data-close>×</button></div>
+      <div class="modal-body">
+        <div class="success-state">
+          <div class="check">✓</div>
+          <h3 data-i18n="rSuccessTitle">Thank you so much</h3>
+          <p data-i18n="rSuccessBody">We've been notified. Your kindness means the world to us.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================================================
+     EDIT MODAL (admin)
+     ============================================================== -->
+<div class="modal-bg" id="editModalBg">
+  <div class="modal lg" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 class="serif" id="editTitle">Add item</h2>
+      <p>This stays on your device until you click "Export updated HTML" and re-upload.</p>
+      <button class="modal-close" aria-label="Close" data-close>×</button>
+    </div>
+    <div class="modal-body">
+      <form id="editForm">
+        <input type="hidden" id="editId" />
+
+        <!-- Auto-fill from URL -->
+        <div class="autofill" id="autofillBlock">
+          <div class="autofill-head">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 6px;">
+              <path d="M5 3l1.5 4L11 8l-4.5 1L5 13l-1.5-4L-1 8l4.5-1z" transform="translate(5,1)"/>
+              <path d="M19 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/>
+            </svg>
+            <strong>Auto-fill from a product link</strong>
+          </div>
+          <p class="autofill-hint">Paste any product URL (Amazon, Aubert, Petit Bateau, Bugaboo…) and we'll prefill the name, photo, description, and store.</p>
+          <div class="autofill-row">
+            <input id="autofillUrl" type="url" placeholder="https://www.amazon.ca/dp/B07VSQRG2N" />
+            <button type="button" class="btn btn-primary" id="autofillBtn">Fetch</button>
+          </div>
+          <div class="autofill-status" id="autofillStatus"></div>
+        </div>
+
+        <label>Name *</label>
+        <input id="editName" required placeholder="UPPAbaby Cruz V2 stroller" />
+
+        <label>Description</label>
+        <textarea id="editDesc" placeholder="Lightweight, one-hand fold, fits through doorways…"></textarea>
+
+        <div class="row">
+          <div>
+            <label>Region *</label>
+            <select id="editRegion">
+              <option value="CA">🇨🇦 Canada (CAD)</option>
+              <option value="FR">🇫🇷 France (EUR)</option>
+            </select>
+          </div>
+          <div>
+            <label>Category</label>
+            <select id="editCategory">
+              <option value="Nursery">Nursery</option>
+              <option value="Travel">Travel</option>
+              <option value="Feeding">Feeding</option>
+              <option value="Sleep">Sleep</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Bath">Bath</option>
+              <option value="Play">Play</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Price *</label>
+            <input id="editPrice" type="number" step="0.01" required placeholder="89.99" />
+          </div>
+          <div>
+            <label>Store name</label>
+            <input id="editStore" placeholder="Amazon.ca" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Product link *</label>
+            <input id="editLink" type="url" required placeholder="https://www.amazon.ca/..." />
+          </div>
+          <div>
+            <label>Image URL <span style="color:var(--ink-mute); font-weight:400;">(optional)</span></label>
+            <input id="editImage" type="url" placeholder="https://…/image.jpg" />
+          </div>
+        </div>
+
+        <div class="checkbox-row">
+          <label>
+            <input type="checkbox" id="editReserved" />
+            Mark as reserved
+          </label>
+          <label>
+            <input type="checkbox" id="editThanked" />
+            Thank-you sent
+          </label>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn" id="editDelete" style="color:#b94a4a; border-color:#e8c8c8;">Delete</button>
+          <button type="button" class="btn" data-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================================================
+     ADMIN PASSWORD MODAL
+     ============================================================== -->
+<div class="modal-bg" id="adminLoginBg">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h2 class="serif">Admin access</h2>
+      <p>Enter the password to unlock editing.</p>
+      <button class="modal-close" aria-label="Close" data-close>×</button>
+    </div>
+    <div class="modal-body">
+      <form id="adminLoginForm">
+        <label>Password</label>
+        <input id="adminPwd" type="password" autofocus />
+        <div class="modal-footer">
+          <button type="button" class="btn" data-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Unlock</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ==============================================================
+     ICON LIBRARY (for items without an image URL)
+     ============================================================== -->
+<svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-crib" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 24v28M56 24v28M14 24v28M22 24v28M30 24v28M38 24v28M46 24v28M54 24v28"/>
+    <path d="M6 24h52M6 44h52"/><path d="M14 16h36l-4 8H18z"/>
+  </symbol>
+  <symbol id="i-stroller" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 38h36l-4-22H22l-2 8H10"/><circle cx="20" cy="50" r="4"/><circle cx="44" cy="50" r="4"/><path d="M14 38l-4 12"/>
+  </symbol>
+  <symbol id="i-carseat" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 14c0-2 2-4 4-4h24c2 0 4 2 4 4v36H16z"/><path d="M16 30h32"/><path d="M22 50v6M42 50v6"/>
+  </symbol>
+  <symbol id="i-bottle" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M26 6h12v6h-12z"/><path d="M22 14h20l-2 6v32a4 4 0 0 1-4 4h-8a4 4 0 0 1-4-4V20z"/><path d="M22 30h20"/>
+  </symbol>
+  <symbol id="i-monitor" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="14" width="44" height="32" rx="4"/><circle cx="32" cy="30" r="6"/><path d="M22 50h20"/>
+  </symbol>
+  <symbol id="i-onesie" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 10l4 4h12l4-4 8 6v10l-6 4v22a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4V30l-6-4V16z"/>
+  </symbol>
+  <symbol id="i-bath" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 30h52v8a14 14 0 0 1-14 14H20a14 14 0 0 1-14-14z"/><path d="M14 30v-8a6 6 0 0 1 12 0"/><path d="M22 22h6"/>
+  </symbol>
+  <symbol id="i-toy" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="20" r="10"/><path d="M32 30v18"/><circle cx="32" cy="52" r="4"/>
+    <path d="M28 18a4 4 0 0 1 8 0"/>
+  </symbol>
+  <symbol id="i-book" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 14h22a6 6 0 0 1 6 6v32a4 4 0 0 0-4-4H8z"/><path d="M56 14H34a6 6 0 0 0-6 6v32a4 4 0 0 1 4-4h24z"/>
+  </symbol>
+  <symbol id="i-mat" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="20" width="52" height="28" rx="4"/><path d="M20 20v28M44 20v28M6 34h52"/>
+  </symbol>
+  <symbol id="i-chair" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 6h28v18H18z"/><path d="M14 24h36l-4 8H18z"/><path d="M22 32v22M42 32v22"/><path d="M22 46h20"/>
+  </symbol>
+  <symbol id="i-default" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="20"/><path d="M22 32a10 10 0 0 0 20 0"/><circle cx="26" cy="26" r="1.5" fill="currentColor"/><circle cx="38" cy="26" r="1.5" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<!-- ==============================================================
+     SEED DATA + APP LOGIC
+     ============================================================== -->
+<script>
+/* ----------------------------------------------------------------
+ * Internationalization
+ * ---------------------------------------------------------------- */
+const I18N = {
+  en: {
+    eyebrow: "Welcome — Bienvenue",
+    heroTitle: "A small list for <br/><em>our little one.</em>",
+    heroLede: "We're so grateful to have you in our lives. If you'd like to mark this season with a gift, here are a few things on our list — split between Canada and France so you can shop where it's easiest.",
+    topPrint: "Print list",
+    topAdmin: "Admin",
+    canada: "Canada",
+    france: "France",
+    filterAll: "All",
+    cat: { Nursery: "Nursery", Travel: "Travel", Feeding: "Feeding", Sleep: "Sleep", Clothing: "Clothing", Bath: "Bath", Play: "Play", Other: "Other" },
+    summary: (total, reserved, available) =>
+      `<strong>${total}</strong> ${total === 1 ? "item" : "items"} · <strong>${reserved}</strong> reserved · <strong>${available}</strong> available`,
+    view: "View",
+    reserve: "Reserve",
+    alreadyReserved: "Already reserved",
+    reservedTag: "Reserved",
+    thankedTag: "Reserved · Thanked",
+    rTitle: "Reserve this gift",
+    rSub: "We'll get a little email so we know not to expect duplicates. Thank you!",
+    rName: "Your name",
+    rNamePh: "Aunt Marie",
+    rEmail: "Your email",
+    rEmailHint: "(optional — so we can thank you)",
+    rEmailPh: "you@example.com",
+    rNote: "A little note",
+    rOpt: "(optional)",
+    rNotePh: "Sending so much love…",
+    cancel: "Cancel",
+    rSubmit: "Reserve gift",
+    rSending: "Sending…",
+    rSuccessTitle: "Thank you so much",
+    rSuccessBody: "We've been notified. Your kindness means the world to us.",
+    footerThanks: "Thank you for celebrating with us",
+    footerQuestions: "Questions? Email",
+    emptyTitle: "Nothing here yet",
+    emptyAdmin: "Add your first item using the + Add item button.",
+    emptyVisitor: "Check back soon — we're still adding to this section.",
+    toastFailed: "Couldn't send — please try again or email us directly.",
+    toastUnlocked: "Welcome back. Admin mode unlocked.",
+    toastWrong: "Wrong password.",
+    toastUpdated: "Item updated.",
+    toastAdded: "Item added.",
+    toastRemoved: "Item removed.",
+    toastDownloaded: "Downloaded. Replace registry.html on your host with this file."
+  },
+  fr: {
+    eyebrow: "Bienvenue — Welcome",
+    heroTitle: "Une petite liste pour <br/><em>notre petit bout.</em>",
+    heroLede: "Nous sommes tellement reconnaissants de vous avoir dans nos vies. Si vous souhaitez marquer ce moment avec un cadeau, voici quelques idées sur notre liste — réparties entre le Canada et la France pour faciliter vos achats.",
+    topPrint: "Imprimer la liste",
+    topAdmin: "Admin",
+    canada: "Canada",
+    france: "France",
+    filterAll: "Tous",
+    cat: { Nursery: "Chambre", Travel: "Déplacement", Feeding: "Repas", Sleep: "Sommeil", Clothing: "Vêtements", Bath: "Bain", Play: "Éveil", Other: "Autre" },
+    summary: (total, reserved, available) =>
+      `<strong>${total}</strong> ${total === 1 ? "article" : "articles"} · <strong>${reserved}</strong> réservé${reserved>1?"s":""} · <strong>${available}</strong> disponible${available>1?"s":""}`,
+    view: "Voir",
+    reserve: "Réserver",
+    alreadyReserved: "Déjà réservé",
+    reservedTag: "Réservé",
+    thankedTag: "Réservé · Remercié",
+    rTitle: "Réserver ce cadeau",
+    rSub: "Un petit email nous sera envoyé pour qu'on ne reçoive pas de doublons. Merci !",
+    rName: "Votre nom",
+    rNamePh: "Tante Marie",
+    rEmail: "Votre email",
+    rEmailHint: "(facultatif — pour qu'on puisse vous remercier)",
+    rEmailPh: "vous@exemple.com",
+    rNote: "Un petit mot",
+    rOpt: "(facultatif)",
+    rNotePh: "Tout notre amour…",
+    cancel: "Annuler",
+    rSubmit: "Réserver",
+    rSending: "Envoi…",
+    rSuccessTitle: "Merci infiniment",
+    rSuccessBody: "Nous avons bien reçu votre message. Votre gentillesse nous touche énormément.",
+    footerThanks: "Merci de célébrer ce moment avec nous",
+    footerQuestions: "Une question ? Écrivez à",
+    emptyTitle: "Rien ici pour l'instant",
+    emptyAdmin: "Ajoutez votre premier article avec le bouton + Ajouter.",
+    emptyVisitor: "Revenez bientôt — nous ajoutons encore des choses à cette section.",
+    toastFailed: "L'envoi a échoué — réessayez ou écrivez-nous directement.",
+    toastUnlocked: "Bon retour. Mode admin déverrouillé.",
+    toastWrong: "Mot de passe incorrect.",
+    toastUpdated: "Article modifié.",
+    toastAdded: "Article ajouté.",
+    toastRemoved: "Article supprimé.",
+    toastDownloaded: "Téléchargé. Remplacez registry.html sur votre hébergeur par ce fichier."
+  }
+};
+
+const LS_LANG = "rutyna-registry-lang-v1";
+let lang = (() => {
+  // Stored preference wins; otherwise detect from browser
+  try {
+    const stored = localStorage.getItem(LS_LANG);
+    if (stored === "en" || stored === "fr") return stored;
+  } catch(e) {}
+  const nav = (navigator.language || "en").toLowerCase();
+  return nav.startsWith("fr") ? "fr" : "en";
+})();
+
+function t(key) {
+  const dict = I18N[lang] || I18N.en;
+  return dict[key] != null ? dict[key] : I18N.en[key];
+}
+
+function applyI18n() {
+  // Text content
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.getAttribute("data-i18n");
+    const v = t(k);
+    if (typeof v === "string") el.textContent = v;
+  });
+  // Inner HTML (for keys whose value contains markup, e.g. heroTitle with <br/><em>)
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const k = el.getAttribute("data-i18n-html");
+    const v = t(k);
+    if (typeof v === "string") el.innerHTML = v;
+  });
+  // Placeholders
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const k = el.getAttribute("data-i18n-ph");
+    const v = t(k);
+    if (typeof v === "string") el.setAttribute("placeholder", v);
+  });
+  // Update <html lang="...">
+  document.documentElement.setAttribute("lang", lang);
+  // Update active state on toggle
+  document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+}
+
+function setLang(newLang) {
+  if (newLang !== "en" && newLang !== "fr") return;
+  lang = newLang;
+  try { localStorage.setItem(LS_LANG, lang); } catch(e) {}
+  applyI18n();
+  render(); // re-render dynamic UI (cards, summary, filters)
+}
+
+/* ----------------------------------------------------------------
+ * Seed items — replace via admin panel after deploying.
+ * Each item: { id, region: 'CA'|'FR', name, description, price, currency, store, link, image, icon, category, reserved, thanked }
+ * ---------------------------------------------------------------- */
+const SEED_ITEMS = [
+  // -------- 🇨🇦 CANADA --------
+  {
+    id: "ca-01", region: "CA", category: "Nursery",
+    name: "Convertible Mini Crib",
+    description: "Solid-wood mini crib that converts to a toddler bed. Fits our small bedroom and grows with the baby for the first 2–3 years.",
+    price: 599, currency: "CAD", store: "Pottery Barn Kids",
+    link: "https://www.potterybarnkids.ca/",
+    image: "https://images.unsplash.com/photo-1586683086300-26ee4ff2d3a4?w=800&q=80&auto=format&fit=crop",
+    icon: "i-crib",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-02", region: "CA", category: "Travel",
+    name: "UPPAbaby Cruz V2 Stroller",
+    description: "Full-size stroller, one-hand fold, big basket, smooth ride for city sidewalks and park paths. Compatible with most car seats.",
+    price: 899, currency: "CAD", store: "Snuggle Bugz",
+    link: "https://www.snugglebugz.ca/",
+    image: "https://images.unsplash.com/photo-1591344571831-fa1e4cd03551?w=800&q=80&auto=format&fit=crop",
+    icon: "i-stroller",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-03", region: "CA", category: "Travel",
+    name: "Nuna PIPA RX Infant Car Seat",
+    description: "Lightweight infant car seat with a magnetic buckle and a stay-in-car base. The lifesaver for sleeping-baby transfers.",
+    price: 549, currency: "CAD", store: "West Coast Kids",
+    link: "https://www.westcoastkids.ca/",
+    image: "https://images.unsplash.com/photo-1607923432848-87bc44b6d76b?w=800&q=80&auto=format&fit=crop",
+    icon: "i-carseat",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-04", region: "CA", category: "Sleep",
+    name: "Hatch Rest+ 2nd Gen",
+    description: "Sound machine + soft night light + clock in one. Multiple sounds, dimmable, controlled from our phone when baby is finally asleep.",
+    price: 109, currency: "CAD", store: "Indigo",
+    link: "https://www.indigo.ca/",
+    image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800&q=80&auto=format&fit=crop",
+    icon: "i-monitor",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-05", region: "CA", category: "Sleep",
+    name: "Owlet Smart Sock 3",
+    description: "Wearable monitor that tracks heart rate and oxygen while baby sleeps. Pure peace of mind for those first nights.",
+    price: 379, currency: "CAD", store: "Amazon.ca",
+    link: "https://www.amazon.ca/",
+    image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&q=80&auto=format&fit=crop",
+    icon: "i-monitor",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-06", region: "CA", category: "Feeding",
+    name: "Philips Avent Bottle Warmer",
+    description: "Warms a bottle in about 3 minutes — gentle, no hot spots, easy to use one-handed at 3 a.m.",
+    price: 79, currency: "CAD", store: "Amazon.ca",
+    link: "https://www.amazon.ca/",
+    image: "https://images.unsplash.com/photo-1546015720-b8b30df5aa27?w=800&q=80&auto=format&fit=crop",
+    icon: "i-bottle",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-07", region: "CA", category: "Clothing",
+    name: "Burt's Bees Organic Onesies (5-pack)",
+    description: "Soft organic-cotton bodysuits in neutral tones. Sizes 0–3M. We can use as many of these as people will give us!",
+    price: 42, currency: "CAD", store: "Indigo Baby",
+    link: "https://www.indigo.ca/",
+    image: "https://images.unsplash.com/photo-1522771930-78848d9293e8?w=800&q=80&auto=format&fit=crop",
+    icon: "i-onesie",
+    reserved: false, thanked: false
+  },
+  {
+    id: "ca-08", region: "CA", category: "Bath",
+    name: "Skip Hop Moby Bath Tub",
+    description: "Smart-sling newborn bath that grows with baby through the toddler years. Whale-shaped because, well, whales.",
+    price: 49, currency: "CAD", store: "Buy Buy Baby",
+    link: "https://www.buybuybaby.ca/",
+    image: "https://images.unsplash.com/photo-1612909237693-66bdb4f37d99?w=800&q=80&auto=format&fit=crop",
+    icon: "i-bath",
+    reserved: false, thanked: false
+  },
+
+  // -------- 🇫🇷 FRANCE --------
+  {
+    id: "fr-01", region: "FR", category: "Nursery",
+    name: "Berceau Stokke Sleepi Mini",
+    description: "Berceau ovale design qui évolue avec bébé. Roues pour le déplacer facilement de pièce en pièce. Made in Norway.",
+    price: 759, currency: "EUR", store: "Aubert",
+    link: "https://www.aubert.com/",
+    image: "https://images.unsplash.com/photo-1564286280-4b8b1c1e2127?w=800&q=80&auto=format&fit=crop",
+    icon: "i-crib",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-02", region: "FR", category: "Travel",
+    name: "Poussette Bugaboo Fox 5",
+    description: "Poussette tout-terrain, suspension exceptionnelle, pliage compact. Idéale pour les balades en ville comme à la campagne.",
+    price: 1199, currency: "EUR", store: "Bugaboo",
+    link: "https://www.bugaboo.com/",
+    image: "https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?w=800&q=80&auto=format&fit=crop",
+    icon: "i-stroller",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-03", region: "FR", category: "Feeding",
+    name: "Chaise Haute Tripp Trapp",
+    description: "La chaise haute évolutive iconique de Stokke. Bois massif, s'adapte de 6 mois à l'âge adulte. Un classique.",
+    price: 269, currency: "EUR", store: "Stokke",
+    link: "https://www.stokke.com/FR/fr-fr/",
+    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop",
+    icon: "i-chair",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-04", region: "FR", category: "Sleep",
+    name: "Cocoonababy Red Castle",
+    description: "Le cocon nid d'ange qui rappelle à bébé la position fœtale. Sommeil plus calme pour les premiers mois.",
+    price: 169, currency: "EUR", store: "Red Castle",
+    link: "https://www.redcastle.fr/",
+    image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80&auto=format&fit=crop",
+    icon: "i-mat",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-05", region: "FR", category: "Clothing",
+    name: "Bodies Coton Bio Petit Bateau (lot de 5)",
+    description: "Les indémodables. Coton bio, fabriqués en France, douceur extrême. Tailles 1M ou 3M.",
+    price: 49, currency: "EUR", store: "Petit Bateau",
+    link: "https://www.petit-bateau.fr/",
+    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80&auto=format&fit=crop",
+    icon: "i-onesie",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-06", region: "FR", category: "Play",
+    name: "Doudou Jellycat Bashful Bunny",
+    description: "Le doudou lapin tout doux que tout bébé finit par adorer. Couleur beige neutre.",
+    price: 28, currency: "EUR", store: "Jellycat",
+    link: "https://www.jellycat.com/fr/",
+    image: "https://images.unsplash.com/photo-1607582544337-0099e9e8af49?w=800&q=80&auto=format&fit=crop",
+    icon: "i-toy",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-07", region: "FR", category: "Play",
+    name: "Tapis d'Éveil Done by Deer",
+    description: "Tapis d'éveil scandinave avec arches et jouets suspendus. Esthétique douce, stimulation visuelle pensée pour bébé.",
+    price: 89, currency: "EUR", store: "Vertbaudet",
+    link: "https://www.vertbaudet.fr/",
+    image: "https://images.unsplash.com/photo-1520038410233-7141be7e6f97?w=800&q=80&auto=format&fit=crop",
+    icon: "i-mat",
+    reserved: false, thanked: false
+  },
+  {
+    id: "fr-08", region: "FR", category: "Other",
+    name: "Livre — Mes Premiers Mots (Gallimard)",
+    description: "Imagier en bois illustré, à manipuler dès le plus jeune âge. Pour commencer la bibliothèque.",
+    price: 22, currency: "EUR", store: "FNAC",
+    link: "https://www.fnac.com/",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80&auto=format&fit=crop",
+    icon: "i-book",
+    reserved: false, thanked: false
+  }
+];
+
+/* ----------------------------------------------------------------
+ * State
+ * ---------------------------------------------------------------- */
+let items = [];
+let activeRegion = "CA";
+let activeCategory = "All";
+let isAdmin = false;
+
+/* ----------------------------------------------------------------
+ * Storage — items persist in localStorage for the admin's session.
+ * Visitors always see the seed data baked into the HTML.
+ * After admin edits, click "Export updated HTML" to download a new
+ * registry.html with the changes baked in, and re-upload to your host.
+ * ---------------------------------------------------------------- */
+const LS_KEY = "rutyna-registry-items-v1";
+const LS_RESERVED = "rutyna-registry-reservations-v1";
+
+// Safe storage helpers — gracefully degrade if localStorage isn't available
+function lsGet(key) {
+  try { return localStorage.getItem(key); } catch (e) { return null; }
+}
+function lsSet(key, value) {
+  try { localStorage.setItem(key, value); } catch (e) { /* ignore */ }
+}
+
+function loadItems() {
+  // Visitors see SEED_ITEMS. Admins see whatever's in localStorage (their drafts).
+  const stored = lsGet(LS_KEY);
+  if (isAdmin && stored) {
+    try { items = JSON.parse(stored); return; } catch(e) {}
+  }
+  // Merge SEED with any locally-known reservation flags (from gifters who reserved on this device)
+  let reservedFlags = {};
+  try { reservedFlags = JSON.parse(lsGet(LS_RESERVED) || "{}"); } catch(e) {}
+  items = SEED_ITEMS.map(it => ({ ...it, reserved: it.reserved || !!reservedFlags[it.id] }));
+}
+function saveItemsLocal() {
+  lsSet(LS_KEY, JSON.stringify(items));
+}
+function markReservedLocally(id) {
+  let r = {};
+  try { r = JSON.parse(lsGet(LS_RESERVED) || "{}"); } catch(e) {}
+  r[id] = true;
+  lsSet(LS_RESERVED, JSON.stringify(r));
+}
+
+/* ----------------------------------------------------------------
+ * Render
+ * ---------------------------------------------------------------- */
+function fmtPrice(item) {
+  const symbol = item.currency === "CAD" ? "$" : "€";
+  const n = Number(item.price).toLocaleString(item.currency === "CAD" ? "en-CA" : "fr-FR", {
+    minimumFractionDigits: 0, maximumFractionDigits: 0
+  });
+  return item.currency === "CAD" ? `${symbol}${n} CAD` : `${n} ${symbol}`;
+}
+
+function iconHTML(item) {
+  const fallbackId = item.icon || 'i-default';
+  if (item.image) {
+    return `<img src="${escapeAttr(item.image)}" alt="${escapeAttr(item.name)}" data-fallback="${escapeAttr(fallbackId)}" />`;
+  }
+  return `<svg><use href="#${fallbackId}"/></svg>`;
+}
+
+function escapeHtml(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+function escapeAttr(s) { return escapeHtml(s); }
+
+function categoriesForRegion(region) {
+  const set = new Set();
+  items.filter(i => i.region === region).forEach(i => set.add(i.category || "Other"));
+  return ["All", ...Array.from(set).sort()];
+}
+
+function localCat(c) {
+  // Translate the category label, but leave the underlying key (English) so filtering works
+  const cats = (I18N[lang] && I18N[lang].cat) || {};
+  return cats[c] || c;
+}
+
+function renderFilters() {
+  const cats = categoriesForRegion(activeRegion);
+  const el = document.getElementById("filterPills");
+  el.innerHTML = cats.map(c => {
+    const label = c === "All" ? t("filterAll") : localCat(c);
+    return `<button class="pill ${c===activeCategory?'active':''}" data-cat="${escapeAttr(c)}">${escapeHtml(label)}</button>`;
+  }).join("");
+  el.querySelectorAll(".pill").forEach(p => {
+    p.addEventListener("click", () => { activeCategory = p.dataset.cat; render(); });
+  });
+}
+
+function renderSummary() {
+  const list = items.filter(i => i.region === activeRegion);
+  const reserved = list.filter(i => i.reserved).length;
+  const total = list.length;
+  const fn = t("summary");
+  document.getElementById("summary").innerHTML =
+    typeof fn === "function" ? fn(total, reserved, total - reserved) : "";
+}
+
+function renderGrid() {
+  let list = items.filter(i => i.region === activeRegion);
+  if (activeCategory !== "All") list = list.filter(i => (i.category || "Other") === activeCategory);
+
+  const grid = document.getElementById("grid");
+  if (list.length === 0) {
+    const msg = isAdmin ? t("emptyAdmin") : t("emptyVisitor");
+    grid.outerHTML = `<div class="empty" id="grid"><h3>${escapeHtml(t("emptyTitle"))}</h3><p>${escapeHtml(msg)}</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(item => {
+    const reserved = item.reserved;
+    const thanked = item.thanked;
+    return `
+      <article class="card ${reserved?'reserved':''}" data-id="${escapeAttr(item.id)}">
+        <div class="card-img">
+          ${iconHTML(item)}
+          ${item.category ? `<span class="card-badge">${escapeHtml(localCat(item.category))}</span>` : ''}
+          ${reserved ? `<span class="card-reserved-tag">${escapeHtml(thanked ? t("thankedTag") : t("reservedTag"))}</span>` : ''}
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="${escapeAttr(item.id)}" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="${escapeAttr(item.id)}" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${escapeHtml(item.name)}</h3>
+          <p class="card-desc">${escapeHtml(item.description || '')}</p>
+          <div class="card-meta">
+            <span class="price">${fmtPrice(item)}</span>
+            ${item.store ? `<span style="color:var(--ink-mute); font-size:13px;">${escapeHtml(item.store)}</span>` : ''}
+          </div>
+        </div>
+        <div class="card-actions">
+          ${item.link ? `<a class="btn" href="${escapeAttr(item.link)}" target="_blank" rel="noopener">${escapeHtml(t("view"))} →</a>` : ''}
+          <button class="btn btn-primary" data-reserve="${escapeAttr(item.id)}" ${reserved?'disabled':''}>
+            ${escapeHtml(reserved ? t("alreadyReserved") : t("reserve"))}
+          </button>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  // Wire up
+  grid.querySelectorAll("[data-reserve]").forEach(b => b.addEventListener("click", () => openReserveModal(b.dataset.reserve)));
+  grid.querySelectorAll("[data-edit]").forEach(b => b.addEventListener("click", () => openEditModal(b.dataset.edit)));
+  grid.querySelectorAll("[data-delete]").forEach(b => b.addEventListener("click", () => deleteItem(b.dataset.delete)));
+  // Image fallback to SVG icon if a product photo URL fails to load
+  grid.querySelectorAll("img[data-fallback]").forEach(img => {
+    img.addEventListener("error", () => {
+      const fid = img.dataset.fallback || "i-default";
+      img.outerHTML = `<svg><use href="#${fid}"/></svg>`;
+    });
+  });
+}
+
+function render() {
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.region === activeRegion));
+  renderFilters();
+  renderSummary();
+  renderGrid();
+}
+
+/* ----------------------------------------------------------------
+ * Reserve modal
+ * ---------------------------------------------------------------- */
+function openReserveModal(id) {
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+  const preview = document.getElementById("reservePreview");
+  preview.innerHTML = `
+    <div class="thumb">${iconHTML(item)}</div>
+    <div>
+      <h3>${escapeHtml(item.name)}</h3>
+      <div class="price-sm">${fmtPrice(item)} · ${escapeHtml(item.store || '')}</div>
+    </div>
+  `;
+  document.getElementById("reserveForm").dataset.itemId = id;
+  document.getElementById("reserveModalBg").classList.add("open");
+  setTimeout(() => document.getElementById("gifterName").focus(), 100);
+}
+
+document.getElementById("reserveForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const id = e.target.dataset.itemId;
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+
+  const submitBtn = document.getElementById("reserveSubmit");
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = t("rSending");
+
+  const formData = {
+    _subject: `Baby registry: ${item.name} reserved by ${document.getElementById("gifterName").value}`,
+    item_name: item.name,
+    item_price: fmtPrice(item),
+    item_region: item.region === "CA" ? "Canada" : "France",
+    item_link: item.link,
+    gifter_name: document.getElementById("gifterName").value,
+    gifter_email: document.getElementById("gifterEmail").value,
+    gifter_note: document.getElementById("gifterNote").value,
+    reserved_at: new Date().toLocaleString()
+  };
+
+  const endpoint = window.REGISTRY_CONFIG.formspreeEndpoint;
+  let ok = false;
+  if (endpoint && !endpoint.includes("REPLACE_ME")) {
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(formData)
+      });
+      ok = res.ok;
+    } catch (err) { ok = false; }
+  } else {
+    // Demo mode: pretend it worked, but warn in console
+    console.warn("Formspree endpoint not configured. Reservation NOT actually emailed.");
+    ok = true;
+  }
+
+  if (ok) {
+    markReservedLocally(item.id);
+    item.reserved = true;
+    showSuccess();
+    render();
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = t("rSubmit");
+    toast(t("toastFailed"));
+  }
+});
+
+function showSuccess() {
+  document.getElementById("reserveFormView").style.display = "none";
+  document.getElementById("reserveSuccessView").style.display = "block";
+  setTimeout(closeReserveModal, 2800);
+}
+
+function closeReserveModal() {
+  document.getElementById("reserveModalBg").classList.remove("open");
+  // Reset views for next reservation
+  setTimeout(() => {
+    document.getElementById("reserveFormView").style.display = "";
+    document.getElementById("reserveSuccessView").style.display = "none";
+    document.getElementById("reserveForm").reset();
+    const submitBtn = document.getElementById("reserveSubmit");
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "<span>Reserve gift</span>";
+  }, 300);
+}
+
+/* ----------------------------------------------------------------
+ * Tabs
+ * ---------------------------------------------------------------- */
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    activeRegion = t.dataset.region;
+    activeCategory = "All";
+    render();
+  });
+});
+
+/* ----------------------------------------------------------------
+ * Modal close
+ * ---------------------------------------------------------------- */
+document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", closeAllModals));
+document.querySelectorAll(".modal-bg").forEach(bg => bg.addEventListener("click", e => { if (e.target === bg) closeAllModals(); }));
+function closeAllModals() {
+  document.querySelectorAll(".modal-bg").forEach(m => m.classList.remove("open"));
+  // Reset reserve modal state for next time
+  setTimeout(() => {
+    const formView = document.getElementById("reserveFormView");
+    const successView = document.getElementById("reserveSuccessView");
+    if (formView) formView.style.display = "";
+    if (successView) successView.style.display = "none";
+    const f = document.getElementById("reserveForm");
+    if (f) f.reset();
+    const submitBtn = document.getElementById("reserveSubmit");
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<span data-i18n="rSubmit">${escapeHtml(t("rSubmit"))}</span>`;
+    }
+  }, 300);
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeAllModals(); });
+
+/* ----------------------------------------------------------------
+ * ADMIN
+ * ---------------------------------------------------------------- */
+function checkAdminFromURL() {
+  const params = new URLSearchParams(location.search);
+  if (params.has("admin")) {
+    document.getElementById("adminLoginBg").classList.add("open");
+  }
+}
+document.getElementById("adminLoginForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const pwd = document.getElementById("adminPwd").value;
+  if (pwd === window.REGISTRY_CONFIG.adminPassword) {
+    isAdmin = true;
+    document.body.classList.add("admin");
+    document.getElementById("adminBar").classList.add("visible");
+    closeAllModals();
+    loadItems();
+    render();
+    toast(t("toastUnlocked"));
+  } else {
+    toast(t("toastWrong"));
+  }
+});
+
+document.getElementById("adminAdd").addEventListener("click", () => openEditModal(null));
+document.getElementById("adminLogout").addEventListener("click", () => {
+  isAdmin = false;
+  document.body.classList.remove("admin");
+  document.getElementById("adminBar").classList.remove("visible");
+  loadItems();
+  render();
+});
+
+document.getElementById("adminExport").addEventListener("click", () => exportHTML());
+
+function openEditModal(id) {
+  const item = id ? items.find(i => i.id === id) : null;
+  document.getElementById("editTitle").textContent = item ? "Edit item" : "Add item";
+  document.getElementById("editId").value = item ? item.id : "";
+  document.getElementById("editName").value = item ? item.name : "";
+  document.getElementById("editDesc").value = item ? (item.description || "") : "";
+  document.getElementById("editRegion").value = item ? item.region : activeRegion;
+  document.getElementById("editCategory").value = item ? (item.category || "Other") : "Nursery";
+  document.getElementById("editPrice").value = item ? item.price : "";
+  document.getElementById("editStore").value = item ? (item.store || "") : "";
+  document.getElementById("editLink").value = item ? (item.link || "") : "";
+  document.getElementById("editImage").value = item ? (item.image || "") : "";
+  document.getElementById("editReserved").checked = item ? !!item.reserved : false;
+  document.getElementById("editThanked").checked = item ? !!item.thanked : false;
+  document.getElementById("editDelete").style.display = item ? "inline-flex" : "none";
+  // Reset autofill
+  document.getElementById("autofillUrl").value = item ? (item.link || "") : "";
+  document.getElementById("autofillStatus").textContent = "";
+  document.getElementById("autofillStatus").className = "autofill-status";
+  document.getElementById("editModalBg").classList.add("open");
+}
+
+/* ----------------------------------------------------------------
+ * Auto-fill from product URL via microlink.io
+ * ---------------------------------------------------------------- */
+async function autofillFromURL() {
+  const url = document.getElementById("autofillUrl").value.trim();
+  const status = document.getElementById("autofillStatus");
+  const btn = document.getElementById("autofillBtn");
+
+  status.className = "autofill-status";
+  if (!url) { status.textContent = "Paste a product URL first."; status.classList.add("err"); return; }
+  if (!/^https?:\/\//i.test(url)) { status.textContent = "Make sure the URL starts with https://."; status.classList.add("err"); return; }
+
+  btn.disabled = true;
+  const origLabel = btn.textContent;
+  btn.textContent = "Reading…";
+  status.textContent = "Reading the product page…";
+
+  try {
+    // microlink.io free tier — no API key needed, ~50 requests/day per IP.
+    const apiUrl = "https://api.microlink.io/?url=" + encodeURIComponent(url);
+    const res = await fetch(apiUrl);
+    const json = await res.json();
+    if (json.status !== "success") throw new Error(json.message || "Couldn't read that page.");
+
+    const d = json.data || {};
+
+    // Title → name
+    if (d.title) document.getElementById("editName").value = d.title;
+    // Description
+    if (d.description) document.getElementById("editDesc").value = d.description;
+    // Image
+    const imgUrl = d.image && (d.image.url || d.image);
+    if (imgUrl) document.getElementById("editImage").value = imgUrl;
+    // Store / publisher
+    if (d.publisher) document.getElementById("editStore").value = d.publisher;
+    else if (d.author) document.getElementById("editStore").value = d.author;
+    else {
+      try {
+        const host = new URL(url).hostname.replace(/^www\./, "");
+        document.getElementById("editStore").value = host;
+      } catch(e){}
+    }
+    // Final link
+    document.getElementById("editLink").value = d.url || url;
+
+    // Detect region from URL
+    const lower = url.toLowerCase();
+    if (/\.ca([\/?#]|$)|amazon\.ca|indigo\.ca|snugglebugz|westcoastkids|buybuybaby\.ca/.test(lower)) {
+      document.getElementById("editRegion").value = "CA";
+    } else if (/\.fr([\/?#]|$)|amazon\.fr|aubert|vertbaudet|petit-bateau|laredoute|fnac\.com|stokke\.com\/fr|bugaboo\.com\/fr|jellycat\.com\/fr|redcastle/.test(lower)) {
+      document.getElementById("editRegion").value = "FR";
+    }
+
+    // Try to detect price from description (e.g. "€89.99" or "$129")
+    if (!document.getElementById("editPrice").value) {
+      const text = (d.description || "") + " " + (d.title || "");
+      const m = text.match(/(?:CAD|EUR|USD|\$|€|£)\s*([\d,]+(?:[.,]\d{2})?)|([\d,]+(?:[.,]\d{2})?)\s*(?:€|\$|CAD|EUR)/i);
+      if (m) {
+        const raw = m[1] || m[2];
+        const num = parseFloat(raw.replace(/[\s,]/g, "").replace(",", "."));
+        if (!isNaN(num)) document.getElementById("editPrice").value = num;
+      }
+    }
+
+    status.textContent = "✓ Filled in. Double-check the price and tweak anything you'd like before saving.";
+    status.classList.add("ok");
+  } catch (err) {
+    status.textContent = "Couldn't read that page (" + (err.message || "network error") + "). Fill in the fields manually below.";
+    status.classList.add("err");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = origLabel;
+  }
+}
+document.getElementById("autofillBtn").addEventListener("click", autofillFromURL);
+document.getElementById("autofillUrl").addEventListener("keydown", e => {
+  if (e.key === "Enter") { e.preventDefault(); autofillFromURL(); }
+});
+
+document.getElementById("editForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const id = document.getElementById("editId").value;
+  const region = document.getElementById("editRegion").value;
+  const data = {
+    id: id || `${region.toLowerCase()}-${Date.now()}`,
+    region,
+    category: document.getElementById("editCategory").value,
+    name: document.getElementById("editName").value.trim(),
+    description: document.getElementById("editDesc").value.trim(),
+    price: parseFloat(document.getElementById("editPrice").value),
+    currency: region === "CA" ? "CAD" : "EUR",
+    store: document.getElementById("editStore").value.trim(),
+    link: document.getElementById("editLink").value.trim(),
+    image: document.getElementById("editImage").value.trim(),
+    icon: "i-default",
+    reserved: document.getElementById("editReserved").checked,
+    thanked: document.getElementById("editThanked").checked
+  };
+  if (id) {
+    const idx = items.findIndex(i => i.id === id);
+    if (idx >= 0) items[idx] = { ...items[idx], ...data };
+  } else {
+    items.push(data);
+  }
+  saveItemsLocal();
+  closeAllModals();
+  render();
+  toast(id ? t("toastUpdated") : t("toastAdded"));
+});
+
+document.getElementById("editDelete").addEventListener("click", () => {
+  const id = document.getElementById("editId").value;
+  if (!id) return;
+  if (!confirm("Delete this item? This cannot be undone (until you reload the page).")) return;
+  deleteItem(id);
+  closeAllModals();
+});
+
+function deleteItem(id) {
+  items = items.filter(i => i.id !== id);
+  saveItemsLocal();
+  render();
+  toast(t("toastRemoved"));
+}
+
+/* ----------------------------------------------------------------
+ * Export updated HTML
+ * Generates a copy of this page with the current `items` array baked
+ * in as the new SEED_ITEMS — just re-upload to overwrite your hosted file.
+ * ---------------------------------------------------------------- */
+function exportHTML() {
+  // Get current page HTML
+  const html = document.documentElement.outerHTML;
+  // Replace the SEED_ITEMS array with current items
+  const seedJSON = JSON.stringify(items, null, 2);
+  const replaced = html.replace(
+    /const SEED_ITEMS = \[[\s\S]*?\];/,
+    `const SEED_ITEMS = ${seedJSON};`
+  );
+  const blob = new Blob(["<!doctype html>\n" + replaced], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "registry.html";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast(t("toastDownloaded"));
+}
+
+/* ----------------------------------------------------------------
+ * Print
+ * ---------------------------------------------------------------- */
+document.getElementById("topPrint").addEventListener("click", (e) => { e.preventDefault(); window.print(); });
+
+/* ----------------------------------------------------------------
+ * Toast
+ * ---------------------------------------------------------------- */
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("visible");
+  setTimeout(() => t.classList.remove("visible"), 3000);
+}
+
+/* ----------------------------------------------------------------
+ * Language toggle
+ * ---------------------------------------------------------------- */
+document.querySelectorAll(".lang-btn").forEach(b => {
+  b.addEventListener("click", () => setLang(b.dataset.lang));
+});
+
+/* ----------------------------------------------------------------
+ * Boot
+ * ---------------------------------------------------------------- */
+document.getElementById("parentsLabel").textContent = window.REGISTRY_CONFIG.parents;
+document.getElementById("dueLabel").textContent = window.REGISTRY_CONFIG.dueDate;
+applyI18n();
+loadItems();
+render();
+checkAdminFromURL();
+</script>
+
+</body>
+</html>
