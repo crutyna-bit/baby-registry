@@ -1284,16 +1284,16 @@ function renderGrid() {
         </div>
         <div class="card-actions">
           ${item.link ? `<a class="btn" href="${escapeAttr(item.link)}" target="_blank" rel="noopener">${escapeHtml(t("view"))} →</a>` : ''}
-          <button class="btn btn-primary" data-reserve="${escapeAttr(item.id)}" ${reserved?'disabled':''}>
-            ${escapeHtml(reserved ? t("alreadyReserved") : t("reserve"))}
-          </button>
+          ${reserved
+            ? `<button class="btn btn-primary" disabled>${escapeHtml(t("alreadyReserved"))}</button>`
+            : `<a class="btn btn-primary" href="${escapeAttr(makeMailto(item))}">${escapeHtml(t("reserve"))}</a>`
+          }
         </div>
       </article>
     `;
   }).join("");
 
   // Wire up
-  grid.querySelectorAll("[data-reserve]").forEach(b => b.addEventListener("click", () => openReserveModal(b.dataset.reserve)));
   grid.querySelectorAll("[data-edit]").forEach(b => b.addEventListener("click", () => openEditModal(b.dataset.edit)));
   grid.querySelectorAll("[data-delete]").forEach(b => b.addEventListener("click", () => deleteItem(b.dataset.delete)));
   // Image fallback to SVG icon if a product photo URL fails to load
@@ -1303,6 +1303,21 @@ function renderGrid() {
       img.outerHTML = `<svg><use href="#${fid}"/></svg>`;
     });
   });
+}
+
+function makeMailto(item) {
+  const to = "christophe.rutyna@gmail.com,czeppet@gmail.com";
+  const subject = encodeURIComponent(`Baby registry: I'd like to reserve "${item.name}"`);
+  const body = encodeURIComponent(
+    `Hi Chris & Cz,\n\nI'd like to reserve the following item from your baby registry:\n\n` +
+    `Item: ${item.name}\n` +
+    `Price: ${fmtPrice(item)}\n` +
+    `Store: ${item.store || "—"}\n` +
+    `Link: ${item.link || "—"}\n\n` +
+    `My name: [please fill in your name]\n\n` +
+    `Looking forward to welcoming your little one! 🎉`
+  );
+  return `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
 function render() {
