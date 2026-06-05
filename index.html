@@ -1310,94 +1310,6 @@ function render() {
   renderGrid();
 }
 
-/* ----------------------------------------------------------------
- * Reserve modal
- * ---------------------------------------------------------------- */
-function openReserveModal(id) {
-  const item = items.find(i => i.id === id);
-  if (!item) return;
-  const preview = document.getElementById("reservePreview");
-  preview.innerHTML = `
-    <div class="thumb">${iconHTML(item)}</div>
-    <div>
-      <h3>${escapeHtml(item.name)}</h3>
-      <div class="price-sm">${fmtPrice(item)} · ${escapeHtml(item.store || '')}</div>
-    </div>
-  `;
-  document.getElementById("reserveForm").dataset.itemId = id;
-  document.getElementById("reserveModalBg").classList.add("open");
-  setTimeout(() => document.getElementById("gifterName").focus(), 100);
-}
-
-document.getElementById("reserveForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const id = e.target.dataset.itemId;
-  const item = items.find(i => i.id === id);
-  if (!item) return;
-
-  const submitBtn = document.getElementById("reserveSubmit");
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = t("rSending");
-
-  const formData = {
-    _subject: `Baby registry: ${item.name} reserved by ${document.getElementById("gifterName").value}`,
-    item_name: item.name,
-    item_price: fmtPrice(item),
-    item_region: item.region === "CA" ? "Canada" : "France",
-    item_link: item.link,
-    gifter_name: document.getElementById("gifterName").value,
-    gifter_email: document.getElementById("gifterEmail").value,
-    gifter_note: document.getElementById("gifterNote").value,
-    reserved_at: new Date().toLocaleString()
-  };
-
-  const endpoint = window.REGISTRY_CONFIG.formspreeEndpoint;
-  let ok = false;
-  if (endpoint && !endpoint.includes("REPLACE_ME")) {
-    try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(formData)
-      });
-      ok = res.ok;
-    } catch (err) { ok = false; }
-  } else {
-    // Demo mode: pretend it worked, but warn in console
-    console.warn("Formspree endpoint not configured. Reservation NOT actually emailed.");
-    ok = true;
-  }
-
-  if (ok) {
-    markReservedLocally(item.id);
-    item.reserved = true;
-    showSuccess();
-    render();
-  } else {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = t("rSubmit");
-    toast(t("toastFailed"));
-  }
-});
-
-function showSuccess() {
-  document.getElementById("reserveFormView").style.display = "none";
-  document.getElementById("reserveSuccessView").style.display = "block";
-  setTimeout(closeReserveModal, 2800);
-}
-
-function closeReserveModal() {
-  document.getElementById("reserveModalBg").classList.remove("open");
-  // Reset views for next reservation
-  setTimeout(() => {
-    document.getElementById("reserveFormView").style.display = "";
-    document.getElementById("reserveSuccessView").style.display = "none";
-    document.getElementById("reserveForm").reset();
-    const submitBtn = document.getElementById("reserveSubmit");
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = "<span>Reserve gift</span>";
-  }, 300);
-}
 
 /* ----------------------------------------------------------------
  * Tabs
@@ -1417,20 +1329,6 @@ document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click
 document.querySelectorAll(".modal-bg").forEach(bg => bg.addEventListener("click", e => { if (e.target === bg) closeAllModals(); }));
 function closeAllModals() {
   document.querySelectorAll(".modal-bg").forEach(m => m.classList.remove("open"));
-  // Reset reserve modal state for next time
-  setTimeout(() => {
-    const formView = document.getElementById("reserveFormView");
-    const successView = document.getElementById("reserveSuccessView");
-    if (formView) formView.style.display = "";
-    if (successView) successView.style.display = "none";
-    const f = document.getElementById("reserveForm");
-    if (f) f.reset();
-    const submitBtn = document.getElementById("reserveSubmit");
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `<span data-i18n="rSubmit">${escapeHtml(t("rSubmit"))}</span>`;
-    }
-  }, 300);
 }
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeAllModals(); });
 
