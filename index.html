@@ -599,7 +599,7 @@ window.REGISTRY_CONFIG = {
 
   <!-- Toolbar -->
   <div class="toolbar">
-    <div class="summary" id="summary"><strong>12</strong> items · <strong>0</strong> reserved · <strong>12</strong> available</div>
+    <div class="summary" id="summary"><strong>14</strong> items · <strong>0</strong> reserved · <strong>14</strong> available</div>
     <div class="filter-pills" id="filterPills"><button class="pill active" data-cat="All">All</button><button class="pill " data-cat="Bath">Bath</button><button class="pill " data-cat="Clothing">Clothing</button><button class="pill " data-cat="Nursery">Nursery</button><button class="pill " data-cat="Play">Play</button><button class="pill " data-cat="Sleep">Sleep</button></div>
   </div>
 
@@ -895,6 +895,54 @@ window.REGISTRY_CONFIG = {
           <button class="btn btn-primary" data-reserve="ca-1780627040442">Reserve</button>
         </div>
       </article>
+    
+      <article class="card " data-id="ca-1780628599309">
+        <div class="card-img">
+          <img src="https://image.hm.com/assets/hm/1d/c3/1dc3d63caf44ea02ec1cf693289cc6c7e87d8dac.jpg?imwidth=2160" alt="6-9M - Peter Rabbit - 2 Pieces Cotton Set" data-fallback="i-default">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780628599309" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780628599309" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">6-9M - Peter Rabbit - 2 Pieces Cotton Set</h3>
+          <p class="card-desc">Size 6-9M - Peter Rabbit - 2 Pieces Cotton Set</p>
+          <div class="card-meta">
+            <span class="price">$30 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">H&amp;M</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www2.hm.com/en_ca/productpage.1324880001.html?srsltid=AfmBOoph3cEKVvgzwv8IvyK6cWY1Ugq0S0EFwOLsqlD4RwjctrD6bBLu" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780628599309">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780628788010">
+        <div class="card-img">
+          <img src="https://image.hm.com/assets/hm/c3/35/c3356c0d22ee3312e24aef99caab40f576baf499.jpg?imwidth=2160" alt="9-12M - White Sun Hat" data-fallback="i-default">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780628788010" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780628788010" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">9-12M - White Sun Hat</h3>
+          <p class="card-desc">9-12M - White Sun Hat</p>
+          <div class="card-meta">
+            <span class="price">$10 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">H&amp;M</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www2.hm.com/en_ca/productpage.1201013008.html" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780628788010">Reserve</button>
+        </div>
+      </article>
     </div>
 
 </main>
@@ -914,7 +962,7 @@ window.REGISTRY_CONFIG = {
   <div class="modal" role="dialog" aria-modal="true">
     <div class="modal-header">
       <h2 class="serif">How will you give the gift?</h2>
-      <p id="deliveryItemName" style="font-weight:500; color:var(--ink);"></p>
+      <p id="deliveryItemName" style="font-weight:500; color:var(--ink);">Stripe Overalls 12-18 months</p>
       <button class="modal-close" aria-label="Close" id="deliveryClose">×</button>
     </div>
     <div class="modal-body">
@@ -1067,7 +1115,7 @@ window.REGISTRY_CONFIG = {
   </div>
 </div>
 
-<div class="toast visible" id="toast">Item removed.</div>
+<div class="toast" id="toast">Item added.</div>
 
 <!-- ==============================================================
      ICON LIBRARY (for items without an image URL)
@@ -1521,6 +1569,36 @@ const SEED_ITEMS = [
     "icon": "i-default",
     "reserved": false,
     "thanked": false
+  },
+  {
+    "id": "ca-1780628599309",
+    "region": "CA",
+    "category": "Clothing",
+    "name": "6-9M - Peter Rabbit - 2 Pieces Cotton Set",
+    "description": "Size 6-9M - Peter Rabbit - 2 Pieces Cotton Set",
+    "price": 29.99,
+    "currency": "CAD",
+    "store": "H&M",
+    "link": "https://www2.hm.com/en_ca/productpage.1324880001.html?srsltid=AfmBOoph3cEKVvgzwv8IvyK6cWY1Ugq0S0EFwOLsqlD4RwjctrD6bBLu",
+    "image": "https://image.hm.com/assets/hm/1d/c3/1dc3d63caf44ea02ec1cf693289cc6c7e87d8dac.jpg?imwidth=2160",
+    "icon": "i-default",
+    "reserved": false,
+    "thanked": false
+  },
+  {
+    "id": "ca-1780628788010",
+    "region": "CA",
+    "category": "Clothing",
+    "name": "9-12M - White Sun Hat",
+    "description": "9-12M - White Sun Hat",
+    "price": 9.99,
+    "currency": "CAD",
+    "store": "H&M",
+    "link": "https://www2.hm.com/en_ca/productpage.1201013008.html",
+    "image": "https://image.hm.com/assets/hm/c3/35/c3356c0d22ee3312e24aef99caab40f576baf499.jpg?imwidth=2160",
+    "icon": "i-default",
+    "reserved": false,
+    "thanked": false
   }
 ];
 
@@ -1700,10 +1778,10 @@ function makeMailto(item, deliveryType) {
       deliverySection =
         `📦 Comment je l'envoie\n` +
         `Je vais le commander en ligne et le faire livrer directement à :\n\n` +
-        `   Christina & Christophe Rutyna\n` +
-        `   57 Beaconsfield Court\n` +
-        `   Beaconsfield, H9W 5G5\n` +
-        `   Québec, Canada`;
+        `   Famille Rutyna\n` +
+        `   106 rue du château\n` +
+        `   30600 Montcalm\n` +
+        `   France`;
     } else {
       deliverySection =
         `🎁 Comment je l'offre\n` +
