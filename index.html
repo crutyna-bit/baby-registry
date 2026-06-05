@@ -985,24 +985,6 @@ function setLang(newLang) {
 const SEED_ITEMS = [
   // -------- 🇨🇦 CANADA --------
   {
-    id: "ca-1780270847399", region: "CA", category: "Nursery",
-    name: "Baby Bathtub Grey Color",
-    description: "Skip Hop versatile bathtub grows with baby through three stages and is the only baby bathtub you'll ever need.",
-    price: 59.99, currency: "CAD", store: "Snuggle Bugz",
-    link: "https://snugglebugz.ca/products/skip-hop-moby-smart-sling-3-stage-bathtub?option_values=370800296215",
-    image: "https://snugglebugz.ca/cdn/shop/files/Grey-Tub-1.jpg?v=1689693654&width=600",
-    icon: "i-bath", reserved: false, thanked: false
-  },
-  {
-    id: "ca-1780271264249", region: "CA", category: "Bath",
-    name: "Duck Baby Bath Thermometer",
-    description: "Dreambaby room and bath thermometer shaped like a duck.",
-    price: 16.99, currency: "CAD", store: "Amazon",
-    link: "https://www.amazon.ca/Dreambaby-L321-Room-Bath-Thermometer/dp/B00AIRTNVW",
-    image: "https://m.media-amazon.com/images/I/61TNnn2BXcL._SL1500_.jpg",
-    icon: "i-bath", reserved: false, thanked: false
-  },
-  {
     id: "ca-1780271801765", region: "CA", category: "Clothing",
     name: "Golf Print Onesie 6 months",
     description: "Size: 6 months",
@@ -1082,6 +1064,24 @@ const SEED_ITEMS = [
     link: "https://www.billielekid.com/en/products/petit-bateau-ensemble-2-pieces-bebe-en-coton-lin-detail-brode",
     image: "https://www.billielekid.com/cdn/shop/files/ensemble_blanc_petit_bateau_A0F17_boutique_billie_le_kid_1_54c543f7-31a1-48e5-b7c5-fea0b30e23a3.png?v=1773515470&width=800",
     icon: "i-onesie", reserved: false, thanked: false
+  },
+  {
+    id: "ca-1780270847399", region: "CA", category: "Nursery",
+    name: "Baby Bathtub Grey Color",
+    description: "Skip Hop versatile bathtub grows with baby through three stages and is the only baby bathtub you'll ever need.",
+    price: 59.99, currency: "CAD", store: "Snuggle Bugz",
+    link: "https://snugglebugz.ca/products/skip-hop-moby-smart-sling-3-stage-bathtub?option_values=370800296215",
+    image: "https://snugglebugz.ca/cdn/shop/files/Grey-Tub-1.jpg?v=1689693654&width=600",
+    icon: "i-bath", reserved: false, thanked: false
+  },
+  {
+    id: "ca-1780271264249", region: "CA", category: "Bath",
+    name: "Duck Baby Bath Thermometer",
+    description: "Dreambaby room and bath thermometer shaped like a duck.",
+    price: 16.99, currency: "CAD", store: "Amazon",
+    link: "https://www.amazon.ca/Dreambaby-L321-Room-Bath-Thermometer/dp/B00AIRTNVW",
+    image: "https://m.media-amazon.com/images/I/61TNnn2BXcL._SL1500_.jpg",
+    icon: "i-bath", reserved: false, thanked: false
   },
 
   // -------- 🇫🇷 FRANCE --------
@@ -1261,23 +1261,78 @@ function renderGrid() {
 
 function makeMailto(item, deliveryType) {
   const to = "christophe.rutyna@gmail.com,czeppet@gmail.com";
-  const subject = encodeURIComponent(`Baby registry: I'd like to reserve "${item.name}"`);
-  let deliveryLine;
-  if (deliveryType === "ship") {
-    deliveryLine = `I will order it online and have it shipped to:\n57 Beaconsfield Court, Beaconsfield, H9W 5G5, Quebec, Canada`;
+  const isFR = item.region === "FR";
+  const separator = "────────────────────────────";
+
+  const subject = isFR
+    ? encodeURIComponent(`🎁 Liste de naissance — réservation : ${item.name}`)
+    : encodeURIComponent(`🎁 Baby registry reservation — ${item.name}`);
+
+  let deliverySection;
+  if (isFR) {
+    if (deliveryType === "ship") {
+      deliverySection =
+        `📦 COMMENT JE L'ENVOIE\n` +
+        `Je vais le commander en ligne et le faire livrer directement à :\n\n` +
+        `   Christina & Christophe Rutyna\n` +
+        `   57 Beaconsfield Court\n` +
+        `   Beaconsfield, H9W 5G5\n` +
+        `   Québec, Canada`;
+    } else {
+      deliverySection =
+        `🎁 COMMENT JE L'OFFRE\n` +
+        `Je vais l'acheter et l'apporter en personne.`;
+    }
   } else {
-    deliveryLine = `I will buy it and bring it in person.`;
+    if (deliveryType === "ship") {
+      deliverySection =
+        `📦 HOW I'LL SEND IT\n` +
+        `I'll order it online and have it shipped directly to:\n\n` +
+        `   Christina & Christophe Rutyna\n` +
+        `   57 Beaconsfield Court\n` +
+        `   Beaconsfield, H9W 5G5\n` +
+        `   Quebec, Canada`;
+    } else {
+      deliverySection =
+        `🎁 HOW I'LL GIVE IT\n` +
+        `I'll buy it and bring it in person.`;
+    }
   }
-  const body = encodeURIComponent(
-    `Hi Christina & Christophe,\n\nI'd like to reserve the following item from your baby registry:\n\n` +
-    `Item: ${item.name}\n` +
-    `Price: ${fmtPrice(item)}\n` +
-    `Store: ${item.store || "—"}\n` +
-    `Link: ${item.link || "—"}\n\n` +
-    `Delivery: ${deliveryLine}\n\n` +
-    `My name: [please fill in your name]\n\n` +
-    `Looking forward to welcoming your little one! 🎉`
-  );
+
+  const body = isFR
+    ? encodeURIComponent(
+        `Bonjour Christina & Christophe,\n\n` +
+        `Félicitations pour votre petit bout de chou ! Je souhaite réserver le cadeau suivant sur votre liste de naissance :\n\n` +
+        `${separator}\n` +
+        `🛍  ${item.name}\n` +
+        `   Prix :    ${fmtPrice(item)}\n` +
+        `   Boutique : ${item.store || "—"}\n` +
+        `   Lien :    ${item.link || "—"}\n` +
+        `${separator}\n\n` +
+        `${deliverySection}\n\n` +
+        `${separator}\n` +
+        `✍️  MON PRÉNOM / NOM\n` +
+        `[Merci de compléter votre nom ici]\n` +
+        `${separator}\n\n` +
+        `Je vous souhaite beaucoup de bonheur. Vivement que je rencontre le petit ! ♡`
+      )
+    : encodeURIComponent(
+        `Hi Christina & Christophe,\n\n` +
+        `Congratulations on your little one! I'd love to reserve the following gift from your registry:\n\n` +
+        `${separator}\n` +
+        `🛍  ${item.name}\n` +
+        `   Price:  ${fmtPrice(item)}\n` +
+        `   Store:  ${item.store || "—"}\n` +
+        `   Link:   ${item.link || "—"}\n` +
+        `${separator}\n\n` +
+        `${deliverySection}\n\n` +
+        `${separator}\n` +
+        `✍️  MY NAME\n` +
+        `[Please fill in your name here]\n` +
+        `${separator}\n\n` +
+        `Wishing you all so much joy. Can't wait to meet the little one! ♡`
+      );
+
   return `mailto:${to}?subject=${subject}&body=${body}`;
 }
 
