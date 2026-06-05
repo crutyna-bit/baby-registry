@@ -1651,8 +1651,6 @@ function renderGrid() {
 function makeMailto(item, deliveryType) {
   const to = "christophe.rutyna@gmail.com,czeppet@gmail.com";
   const isFR = item.region === "FR";
-  const separator = "────────────────────────────";
-
   const subject = isFR
     ? encodeURIComponent(`🎁 Liste de naissance — réservation : ${item.name}`)
     : encodeURIComponent(`🎁 Baby registry reservation — ${item.name}`);
@@ -1661,7 +1659,7 @@ function makeMailto(item, deliveryType) {
   if (isFR) {
     if (deliveryType === "ship") {
       deliverySection =
-        `📦 COMMENT JE L'ENVOIE\n` +
+        `📦 Comment je l'envoie\n` +
         `Je vais le commander en ligne et le faire livrer directement à :\n\n` +
         `   Christina & Christophe Rutyna\n` +
         `   57 Beaconsfield Court\n` +
@@ -1669,13 +1667,13 @@ function makeMailto(item, deliveryType) {
         `   Québec, Canada`;
     } else {
       deliverySection =
-        `🎁 COMMENT JE L'OFFRE\n` +
+        `🎁 Comment je l'offre\n` +
         `Je vais l'acheter et l'apporter en personne.`;
     }
   } else {
     if (deliveryType === "ship") {
       deliverySection =
-        `📦 HOW I'LL SEND IT\n` +
+        `📦 How I'll send it\n` +
         `I'll order it online and have it shipped directly to:\n\n` +
         `   Christina & Christophe Rutyna\n` +
         `   57 Beaconsfield Court\n` +
@@ -1683,7 +1681,7 @@ function makeMailto(item, deliveryType) {
         `   Quebec, Canada`;
     } else {
       deliverySection =
-        `🎁 HOW I'LL GIVE IT\n` +
+        `🎁 How I'll give it\n` +
         `I'll buy it and bring it in person.`;
     }
   }
@@ -1692,33 +1690,27 @@ function makeMailto(item, deliveryType) {
     ? encodeURIComponent(
         `Bonjour Christina & Christophe,\n\n` +
         `Félicitations pour votre petit bout de chou ! Je souhaite réserver le cadeau suivant sur votre liste de naissance :\n\n` +
-        `${separator}\n` +
-        `🛍  ${item.name}\n` +
-        `   Prix :    ${fmtPrice(item)}\n` +
+        `🛍 Cadeau choisi\n` +
+        `   ${item.name}\n` +
+        `   Prix :     ${fmtPrice(item)}\n` +
         `   Boutique : ${item.store || "—"}\n` +
-        `   Lien :    ${item.link || "—"}\n` +
-        `${separator}\n\n` +
+        `   Lien :     ${item.link || "—"}\n\n` +
         `${deliverySection}\n\n` +
-        `${separator}\n` +
-        `✍️  MON PRÉNOM / NOM\n` +
-        `[Merci de compléter votre nom ici]\n` +
-        `${separator}\n\n` +
+        `✍️ Mon prénom / nom\n` +
+        `[Merci de compléter votre nom ici]\n\n` +
         `Je vous souhaite beaucoup de bonheur. Vivement que je rencontre le petit ! ♡`
       )
     : encodeURIComponent(
         `Hi Christina & Christophe,\n\n` +
         `Congratulations on your little one! I'd love to reserve the following gift from your registry:\n\n` +
-        `${separator}\n` +
-        `🛍  ${item.name}\n` +
+        `🛍 Gift\n` +
+        `   ${item.name}\n` +
         `   Price:  ${fmtPrice(item)}\n` +
         `   Store:  ${item.store || "—"}\n` +
-        `   Link:   ${item.link || "—"}\n` +
-        `${separator}\n\n` +
+        `   Link:   ${item.link || "—"}\n\n` +
         `${deliverySection}\n\n` +
-        `${separator}\n` +
-        `✍️  MY NAME\n` +
-        `[Please fill in your name here]\n` +
-        `${separator}\n\n` +
+        `✍️ My name\n` +
+        `[Please fill in your name here]\n\n` +
         `Wishing you all so much joy. Can't wait to meet the little one! ♡`
       );
 
