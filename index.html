@@ -508,6 +508,19 @@ window.REGISTRY_CONFIG = {
   }
   .toast.visible { transform: translateX(-50%) translateY(0); }
 
+  /* Delivery choice */
+  .delivery-option {
+    display: flex; align-items: center; gap: 16px;
+    width: 100%; padding: 16px; border-radius: var(--radius-sm);
+    border: 1px solid var(--line); background: var(--bg);
+    text-align: left; cursor: pointer;
+    transition: all .15s ease;
+  }
+  .delivery-option:hover { border-color: var(--sage-d); background: var(--sage-l); }
+  .delivery-icon { font-size: 28px; flex-shrink: 0; }
+  .delivery-title { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 3px; }
+  .delivery-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
+
   /* Print */
   @media print {
     .topbar, .tabs, .toolbar, .card-actions, footer, .admin-bar, .admin-controls { display: none !important; }
@@ -611,45 +624,34 @@ window.REGISTRY_CONFIG = {
 </footer>
 
 <!-- ==============================================================
-     RESERVE MODAL
+     DELIVERY CHOICE MODAL
      ============================================================== -->
-<div class="modal-bg" id="reserveModalBg">
+<div class="modal-bg" id="deliveryModalBg">
   <div class="modal" role="dialog" aria-modal="true">
-    <div id="reserveFormView">
-      <div class="modal-header">
-        <h2 class="serif" data-i18n="rTitle">Reserve this gift</h2>
-        <p data-i18n="rSub">We'll get a little email so we know not to expect duplicates. Thank you!</p>
-        <button class="modal-close" aria-label="Close" data-close>×</button>
-      </div>
-      <div class="modal-body">
-        <div class="item-preview" id="reservePreview"></div>
-        <form id="reserveForm">
-          <label for="gifterName" data-i18n="rName">Your name</label>
-          <input id="gifterName" name="gifterName" type="text" required data-i18n-ph="rNamePh" placeholder="Aunt Marie" autocomplete="name" />
-
-          <label for="gifterEmail"><span data-i18n="rEmail">Your email</span> <span style="color:var(--ink-mute); font-weight:400;" data-i18n="rEmailHint">(optional — so we can thank you)</span></label>
-          <input id="gifterEmail" name="gifterEmail" type="email" data-i18n-ph="rEmailPh" placeholder="you@example.com" autocomplete="email" />
-
-          <label for="gifterNote"><span data-i18n="rNote">A little note</span> <span style="color:var(--ink-mute); font-weight:400;" data-i18n="rOpt">(optional)</span></label>
-          <textarea id="gifterNote" name="gifterNote" data-i18n-ph="rNotePh" placeholder="Sending so much love…"></textarea>
-
-          <div class="modal-footer">
-            <button type="button" class="btn" data-close data-i18n="cancel">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="reserveSubmit">
-              <span data-i18n="rSubmit">Reserve gift</span>
-            </button>
-          </div>
-        </form>
-      </div>
+    <div class="modal-header">
+      <h2 class="serif">How will you give the gift?</h2>
+      <p id="deliveryItemName" style="font-weight:500; color:var(--ink);"></p>
+      <button class="modal-close" aria-label="Close" id="deliveryClose">×</button>
     </div>
-    <div id="reserveSuccessView" style="display:none;">
-      <div class="modal-header"><button class="modal-close" data-close>×</button></div>
-      <div class="modal-body">
-        <div class="success-state">
-          <div class="check">✓</div>
-          <h3 data-i18n="rSuccessTitle">Thank you so much</h3>
-          <p data-i18n="rSuccessBody">We've been notified. Your kindness means the world to us.</p>
-        </div>
+    <div class="modal-body">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <button class="delivery-option" id="deliveryShip">
+          <div class="delivery-icon">📦</div>
+          <div>
+            <div class="delivery-title">Ship to home</div>
+            <div class="delivery-desc">I'll order it online and have it shipped to the baby's address.</div>
+          </div>
+        </button>
+        <button class="delivery-option" id="deliveryInPerson">
+          <div class="delivery-icon">🎁</div>
+          <div>
+            <div class="delivery-title">Bring in person</div>
+            <div class="delivery-desc">I'll buy it and bring it myself.</div>
+          </div>
+        </button>
+      </div>
+      <div style="margin-top:16px; text-align:center;">
+        <button class="btn" id="deliveryCancel">Cancel</button>
       </div>
     </div>
   </div>
@@ -1092,86 +1094,6 @@ const SEED_ITEMS = [
     image: "https://www.petit-bateau.fr/dw/image/v2/BCKL_PRD/on/demandware.static/-/Sites-PB_master/default/dw64a9f086/PB/A0EZ301J1.jpg?sw=1390&sh=1622&sm=fit",
     icon: "i-onesie", reserved: false, thanked: false
   },
-  {
-    id: "fr-01", region: "FR", category: "Nursery",
-    name: "Berceau Stokke Sleepi Mini",
-    description: "Berceau ovale design qui évolue avec bébé. Roues pour le déplacer facilement de pièce en pièce. Made in Norway.",
-    price: 759, currency: "EUR", store: "Aubert",
-    link: "https://www.aubert.com/",
-    image: "https://images.unsplash.com/photo-1564286280-4b8b1c1e2127?w=800&q=80&auto=format&fit=crop",
-    icon: "i-crib",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-02", region: "FR", category: "Travel",
-    name: "Poussette Bugaboo Fox 5",
-    description: "Poussette tout-terrain, suspension exceptionnelle, pliage compact. Idéale pour les balades en ville comme à la campagne.",
-    price: 1199, currency: "EUR", store: "Bugaboo",
-    link: "https://www.bugaboo.com/",
-    image: "https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?w=800&q=80&auto=format&fit=crop",
-    icon: "i-stroller",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-03", region: "FR", category: "Feeding",
-    name: "Chaise Haute Tripp Trapp",
-    description: "La chaise haute évolutive iconique de Stokke. Bois massif, s'adapte de 6 mois à l'âge adulte. Un classique.",
-    price: 269, currency: "EUR", store: "Stokke",
-    link: "https://www.stokke.com/FR/fr-fr/",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop",
-    icon: "i-chair",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-04", region: "FR", category: "Sleep",
-    name: "Cocoonababy Red Castle",
-    description: "Le cocon nid d'ange qui rappelle à bébé la position fœtale. Sommeil plus calme pour les premiers mois.",
-    price: 169, currency: "EUR", store: "Red Castle",
-    link: "https://www.redcastle.fr/",
-    image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80&auto=format&fit=crop",
-    icon: "i-mat",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-05", region: "FR", category: "Clothing",
-    name: "Bodies Coton Bio Petit Bateau (lot de 5)",
-    description: "Les indémodables. Coton bio, fabriqués en France, douceur extrême. Tailles 1M ou 3M.",
-    price: 49, currency: "EUR", store: "Petit Bateau",
-    link: "https://www.petit-bateau.fr/",
-    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80&auto=format&fit=crop",
-    icon: "i-onesie",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-06", region: "FR", category: "Play",
-    name: "Doudou Jellycat Bashful Bunny",
-    description: "Le doudou lapin tout doux que tout bébé finit par adorer. Couleur beige neutre.",
-    price: 28, currency: "EUR", store: "Jellycat",
-    link: "https://www.jellycat.com/fr/",
-    image: "https://images.unsplash.com/photo-1607582544337-0099e9e8af49?w=800&q=80&auto=format&fit=crop",
-    icon: "i-toy",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-07", region: "FR", category: "Play",
-    name: "Tapis d'Éveil Done by Deer",
-    description: "Tapis d'éveil scandinave avec arches et jouets suspendus. Esthétique douce, stimulation visuelle pensée pour bébé.",
-    price: 89, currency: "EUR", store: "Vertbaudet",
-    link: "https://www.vertbaudet.fr/",
-    image: "https://images.unsplash.com/photo-1520038410233-7141be7e6f97?w=800&q=80&auto=format&fit=crop",
-    icon: "i-mat",
-    reserved: false, thanked: false
-  },
-  {
-    id: "fr-08", region: "FR", category: "Other",
-    name: "Livre — Mes Premiers Mots (Gallimard)",
-    description: "Imagier en bois illustré, à manipuler dès le plus jeune âge. Pour commencer la bibliothèque.",
-    price: 22, currency: "EUR", store: "FNAC",
-    link: "https://www.fnac.com/",
-    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80&auto=format&fit=crop",
-    icon: "i-book",
-    reserved: false, thanked: false
-  }
 ];
 
 /* ----------------------------------------------------------------
@@ -1314,7 +1236,7 @@ function renderGrid() {
           ${item.link ? `<a class="btn" href="${escapeAttr(item.link)}" target="_blank" rel="noopener">${escapeHtml(t("view"))} →</a>` : ''}
           ${reserved
             ? `<button class="btn btn-primary" disabled>${escapeHtml(t("alreadyReserved"))}</button>`
-            : `<a class="btn btn-primary" href="${escapeAttr(makeMailto(item))}">${escapeHtml(t("reserve"))}</a>`
+            : `<button class="btn btn-primary" data-reserve="${escapeAttr(item.id)}">${escapeHtml(t("reserve"))}</button>`
           }
         </div>
       </article>
@@ -1322,6 +1244,10 @@ function renderGrid() {
   }).join("");
 
   // Wire up
+  grid.querySelectorAll("[data-reserve]").forEach(b => b.addEventListener("click", () => {
+    const item = items.find(i => i.id === b.dataset.reserve);
+    if (item) openDeliveryModal(item);
+  }));
   grid.querySelectorAll("[data-edit]").forEach(b => b.addEventListener("click", () => openEditModal(b.dataset.edit)));
   grid.querySelectorAll("[data-delete]").forEach(b => b.addEventListener("click", () => deleteItem(b.dataset.delete)));
   // Image fallback to SVG icon if a product photo URL fails to load
@@ -1333,19 +1259,48 @@ function renderGrid() {
   });
 }
 
-function makeMailto(item) {
+function makeMailto(item, deliveryType) {
   const to = "christophe.rutyna@gmail.com,czeppet@gmail.com";
   const subject = encodeURIComponent(`Baby registry: I'd like to reserve "${item.name}"`);
+  let deliveryLine;
+  if (deliveryType === "ship") {
+    deliveryLine = `I will order it online and have it shipped to:\n57 Beaconsfield Court, Beaconsfield, H9W 5G5, Quebec, Canada`;
+  } else {
+    deliveryLine = `I will buy it and bring it in person.`;
+  }
   const body = encodeURIComponent(
-    `Hi Chris & Cz,\n\nI'd like to reserve the following item from your baby registry:\n\n` +
+    `Hi Christina & Christophe,\n\nI'd like to reserve the following item from your baby registry:\n\n` +
     `Item: ${item.name}\n` +
     `Price: ${fmtPrice(item)}\n` +
     `Store: ${item.store || "—"}\n` +
     `Link: ${item.link || "—"}\n\n` +
+    `Delivery: ${deliveryLine}\n\n` +
     `My name: [please fill in your name]\n\n` +
     `Looking forward to welcoming your little one! 🎉`
   );
   return `mailto:${to}?subject=${subject}&body=${body}`;
+}
+
+/* Delivery choice modal */
+let _deliveryItem = null;
+document.getElementById("deliveryShip").addEventListener("click", () => {
+  if (_deliveryItem) { window.location.href = makeMailto(_deliveryItem, "ship"); closeDeliveryModal(); }
+});
+document.getElementById("deliveryInPerson").addEventListener("click", () => {
+  if (_deliveryItem) { window.location.href = makeMailto(_deliveryItem, "inperson"); closeDeliveryModal(); }
+});
+document.getElementById("deliveryClose").addEventListener("click", closeDeliveryModal);
+document.getElementById("deliveryCancel").addEventListener("click", closeDeliveryModal);
+document.getElementById("deliveryModalBg").addEventListener("click", e => { if (e.target === document.getElementById("deliveryModalBg")) closeDeliveryModal(); });
+
+function openDeliveryModal(item) {
+  _deliveryItem = item;
+  document.getElementById("deliveryItemName").textContent = item.name;
+  document.getElementById("deliveryModalBg").classList.add("open");
+}
+function closeDeliveryModal() {
+  _deliveryItem = null;
+  document.getElementById("deliveryModalBg").classList.remove("open");
 }
 
 function render() {
