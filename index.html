@@ -525,6 +525,11 @@ window.REGISTRY_CONFIG = {
     .topbar, .tabs, .toolbar, .card-actions, footer, .admin-bar, .admin-controls { display: none !important; }
     .card { break-inside: avoid; }
   }
+
+/* Admin link hidden from visitors; shown only in admin mode */
+#topAdmin { display: none; }
+body.admin #topAdmin { display: inline; }
+
 </style>
 </head>
 <body class="admin">
@@ -1907,6 +1912,7 @@ function renderSummary() {
 function renderGrid() {
   let list = items.filter(i => i.region === activeRegion);
   if (activeCategory !== "All") list = list.filter(i => (i.category || "Other") === activeCategory);
+  list = [...list].sort((a, b) => (a.reserved ? 1 : 0) - (b.reserved ? 1 : 0));
 
   const grid = document.getElementById("grid");
   if (list.length === 0) {
