@@ -1287,6 +1287,36 @@ const SEED_ITEMS = [
     "reserved": true,
     "thanked": false
   },
+    {
+    "id": "fr-1780625394278",
+    "region": "FR",
+    "category": "Clothing",
+    "name": "Body bébé garçon marinière - Jacadi - 12 mois",
+    "description": "Taille 12 mois - Body marinière bébé en coton biologique- Manches courtes- Imprimé Jacadi Paris sur poitrine- Ouverture pressionnée à l’entrejambe",
+    "price": 25,
+    "currency": "EUR",
+    "store": "Jacadi",
+    "link": "https://www.jacadi.fr/bebe/naissance/body/Body-bebe-garcon-mariniere/p/2044673_792",
+    "image": "https://www.jacadi.fr/medias/product-2044673-792-JH.jpg?context=bWFzdGVyfGltYWdlc3w1MDcyNzB8aW1hZ2UvanBlZ3xhREU1TDJnME55OHhNRE16TkRJek1qZ3pPREUzTkM5d2NtOWtkV04wWHpJd05EUTJOek5mTnpreVgwcElMbXB3Wnd8Njc0MzgzMmIwNWQxYzFiNTNmODVmMGVmM2VlMDJmNTAyODQ0MmNjYjc0ZmI1MDk4YmI5ODVjNTY1ZTBlMGIxNg",
+    "icon": "i-default",
+    "reserved": false,
+    "thanked": false
+  },
+    {
+    "id": "fr-1780625490143",
+    "region": "FR",
+    "category": "Clothing",
+    "name": "Pyjama bébé garçon en interlock - Jacadi - 6 mois",
+    "description": "Taille 6 mois - Pyjama bébé garçon en coton biologique- Imprimé vichy- Col en popeline blanche- Ouverture pressionnée invisible devant - Jolie idée de cadeau de naissance à offrir ou à s’offrir",
+    "price": 35,
+    "currency": "EUR",
+    "store": "Jacadi",
+    "link": "https://www.jacadi.fr/bebe/bebe-garcon/dors-bien/Pyjama-bebe-garcon-en-interlock/p/2037333_792",
+    "image": "https://www.jacadi.fr/medias/product-2037333-792-JH.jpg?context=bWFzdGVyfGltYWdlc3wzNzMwOTN8aW1hZ2UvanBlZ3xhRGsyTDJoalppODVPRFkxTURreU5qazBNRFEyTDNCeWIyUjFZM1JmTWpBek56TXpNMTgzT1RKZlNrZ3VhbkJufDNiM2JlZTBjMzZmNGY2ODBkN2QxMGY4NDc4YTdhNGNlODk3MzI0NWMwZmQ1MTg0NDE1OTU4YTA3ZTgwYjVkZTA",
+    "icon": "i-default",
+    "reserved": false,
+    "thanked": false
+  },
   {
     "id": "fr-1780625666006",
     "region": "FR",
@@ -1343,6 +1373,21 @@ const SEED_ITEMS = [
     "store": "Etsy",
     "link": "https://www.etsy.com/ca/listing/4514446081/crochet-sleeping-goose-toy-handmade?ls=s&ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=crochet+goose&ref=sr_gallery-1-3&sr_prefetch=1&pf_from=search&pro=1&sts=1&content_source=062ecae5-298b-4c0a-8446-f6221f859fca%253ALTcf59bba09a6a36449ebda09afcf13ab102bc6523&organic_search_click=1&logging_key=062ecae5-298b-4c0a-8446-f6221f859fca%3ALTcf59bba09a6a36449ebda09afcf13ab102bc6523&variation1=6677253742&variation0=6677253744",
     "image": "https://i.etsystatic.com/42790786/r/il/45c6f3/4866731969/il_1588xN.4866731969_gdqz.jpg",
+    "icon": "i-default",
+    "reserved": false,
+    "thanked": false
+  },
+    {
+    "id": "ca-1780628788010",
+    "region": "CA",
+    "category": "Clothing",
+    "name": "9-12M - White Sun Hat",
+    "description": "9-12M - White Sun Hat",
+    "price": 9.99,
+    "currency": "CAD",
+    "store": "H&M",
+    "link": "https://www2.hm.com/en_ca/productpage.1201013008.html",
+    "image": "https://image.hm.com/assets/hm/c3/35/c3356c0d22ee3312e24aef99caab40f576baf499.jpg?imwidth=2160",
     "icon": "i-default",
     "reserved": false,
     "thanked": false
@@ -1555,9 +1600,9 @@ function lsSet(key, value) {
 }
 
 function loadItems() {
-  // If this device has admin-edited items in localStorage, always show them
+  // Admins see their localStorage drafts; everyone else sees SEED_ITEMS.
   const stored = lsGet(LS_KEY);
-  if (stored) {
+  if (isAdmin && stored) {
     try { items = JSON.parse(stored); return; } catch(e) {}
   }
   // Merge SEED with any locally-known reservation flags (from gifters who reserved on this device)
