@@ -526,10 +526,8 @@ window.REGISTRY_CONFIG = {
     .card { break-inside: avoid; }
   }
 
-/* Admin link hidden from visitors; shown only in admin mode */
 #topAdmin { display: none; }
 body.admin #topAdmin { display: inline; }
-
 </style>
 </head>
 <body>
@@ -594,18 +592,18 @@ body.admin #topAdmin { display: inline; }
 
   <!-- Tabs -->
   <div class="tabs" role="tablist">
-    <button class="tab" data-region="CA" role="tab">
+    <button class="tab active" data-region="CA" role="tab">
       <span class="flag">🇨🇦</span> <span data-i18n="canada">Canada</span>
     </button>
-    <button class="tab active" data-region="FR" role="tab">
+    <button class="tab" data-region="FR" role="tab">
       <span class="flag">🇫🇷</span> <span data-i18n="france">France</span>
     </button>
   </div>
 
   <!-- Toolbar -->
   <div class="toolbar">
-    <div class="summary" id="summary"><strong>7</strong> items · <strong>3</strong> reserved · <strong>4</strong> available</div>
-    <div class="filter-pills" id="filterPills"><button class="pill active" data-cat="All">All</button><button class="pill " data-cat="Bath">Bath</button><button class="pill " data-cat="Clothing">Clothing</button><button class="pill " data-cat="Nursery">Nursery</button></div>
+    <div class="summary" id="summary"><strong>14</strong> items · <strong>0</strong> reserved · <strong>14</strong> available</div>
+    <div class="filter-pills" id="filterPills"><button class="pill active" data-cat="All">All</button><button class="pill " data-cat="Bath">Bath</button><button class="pill " data-cat="Clothing">Clothing</button><button class="pill " data-cat="Nursery">Nursery</button><button class="pill " data-cat="Play">Play</button><button class="pill " data-cat="Sleep">Sleep</button></div>
   </div>
 
   <!-- Admin add controls (only visible in admin mode) -->
@@ -613,171 +611,339 @@ body.admin #topAdmin { display: inline; }
 
   <!-- Grid -->
   <div class="grid" id="grid">
-      <article class="card " data-id="fr-1784568261993">
+      <article class="card " data-id="ca-1780271801765">
         <div class="card-img">
-          <img src="https://cyrillus.fr/cdn/shop/files/70217_0623_C027_PO_FA_F1XX.jpg?v=1766039430&amp;width=1000" alt="12M - Salopette Court Bébé Vichy - Cyrillus" data-fallback="i-default">
+          <img src="https://clement.ca/cdn/shop/files/FIT-26SGL33P01_TAU_A.jpg?v=1769724024&amp;width=1000" alt="Golf Print Onesie 6 months" data-fallback="i-onesie">
           <span class="card-badge">Clothing</span>
           
           <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1784568261993" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1784568261993" title="Delete">×</button>
+            <button class="icon-btn" data-edit="ca-1780271801765" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780271801765" title="Delete">×</button>
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">12M - Salopette Court Bébé Vichy - Cyrillus</h3>
-          <p class="card-desc">12M - Salopette Court Bébé Vichy - Cyrillus</p>
+          <h3 class="card-title">Golf Print Onesie 6 months</h3>
+          <p class="card-desc">Size: 6 months</p>
           <div class="card-meta">
-            <span class="price">22 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">Cyrillus</span>
+            <span class="price">$35 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Clément</span>
           </div>
         </div>
         <div class="card-actions">
-          <a class="btn" href="https://cyrillus.fr/products/combi-salopette-salopette-vichy-vert_6191?nosto_source=cmp&amp;nosto=207927945" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" data-reserve="fr-1784568261993">Reserve</button>
+          <a class="btn" href="https://clement.ca/en/products/golf-ribbed-pajamas-0-12m-fit-26sgl33p01?variant=44047226372130" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780271801765">Reserve</button>
         </div>
       </article>
     
-      <article class="card " data-id="fr-1784568339975">
+      <article class="card " data-id="ca-1780272130370">
         <div class="card-img">
-          <img src="https://cyrillus.fr/cdn/shop/files/70211_0744_2031_NM_FA_F1XX.jpg?v=1779773493&amp;width=1000" alt="6M - Pull en laine merino Bébé" data-fallback="i-default">
+          <img src="https://www.hatchedbaby.ca/cdn/shop/files/Tiny_Henry.webp?v=1750792994&amp;width=1160" alt="Bunny Crochet Toy" data-fallback="i-toy">
+          <span class="card-badge">Play</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780272130370" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780272130370" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Bunny Crochet Toy</h3>
+          <p class="card-desc">Tiny Henry the Bunny — a soft crochet toy from Hatched Baby.</p>
+          <div class="card-meta">
+            <span class="price">$66 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Hatched Baby</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www.hatchedbaby.ca/products/tiny-collection-henry-the-bunny" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780272130370">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780272573017">
+        <div class="card-img">
+          <img src="https://content.gapinc.com/b/0061/166/564/cn61166564.png?width=737" alt="Stripe Overalls 12-18 months" data-fallback="i-onesie">
           <span class="card-badge">Clothing</span>
           
           <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1784568339975" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1784568339975" title="Delete">×</button>
+            <button class="icon-btn" data-edit="ca-1780272573017" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780272573017" title="Delete">×</button>
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">6M - Pull en laine merino Bébé</h3>
-          <p class="card-desc">Taille 6 mois - Pull en laine merino Bébé</p>
+          <h3 class="card-title">Stripe Overalls 12-18 months</h3>
+          <p class="card-desc">Size: 12-18 months</p>
           <div class="card-meta">
-            <span class="price">35 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">Cyrillus</span>
+            <span class="price">$22 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Gap</span>
           </div>
         </div>
         <div class="card-actions">
-          <a class="btn" href="https://cyrillus.fr/products/pull-pull-bleu_5769?nosto_source=cmp&amp;nosto=207927945" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" data-reserve="fr-1784568339975">Reserve</button>
+          <a class="btn" href="https://www.gapfactory.ca/browse/product.do?pid=11727210041218&amp;vid=1" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780272573017">Reserve</button>
         </div>
       </article>
     
-      <article class="card " data-id="fr-1784568663330">
+      <article class="card " data-id="ca-1780273215596">
         <div class="card-img">
-          <img src="https://image.hm.com/assets/hm/ed/4c/ed4c0e099d4ebe12d160ec22cb3f58b03d74eef6.jpg?imwidth=2160" alt="Plaid en laine Beige" data-fallback="i-default">
+          <img src="https://www.billielekid.com/cdn/shop/files/pyjama_bebe-blanc-a0dqp-petit_bateau-boutique-billie-le-kid_3.jpg?v=1768337755&amp;width=1300" alt="Petit Bateau Velour Pyjama Sailor Collar 6 months" data-fallback="i-onesie">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780273215596" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780273215596" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Petit Bateau Velour Pyjama Sailor Collar 6 months</h3>
+          <p class="card-desc">Babies' velour pyjama suit with a sailor collar. Size: 6 months.</p>
+          <div class="card-meta">
+            <span class="price">$90 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Billie Le Kid</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www.billielekid.com/en/products/petit-bateau-pyjama-sailor-collar-36?variant=51704502714687" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780273215596">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780273650248">
+        <div class="card-img">
+          <img src="https://static.zara.net/assets/public/119f/018a/d8bc44aa8c8f/5ad1525a520c/06224730061-e1/06224730061-e1.jpg?ts=1776352479713&amp;w=1500" alt="Striped Crab T-shirt 9-12 months" data-fallback="i-onesie">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780273650248" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780273650248" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Striped Crab T-shirt 9-12 months</h3>
+          <p class="card-desc">Size: 9-12 months</p>
+          <div class="card-meta">
+            <span class="price">$20 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Zara</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www.zara.com/ca/en/embroidered-crab-striped-t-shirt-p06224730.html?v1=518661690" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780273650248">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780274039682">
+        <div class="card-img">
+          <img src="https://clement.ca/cdn/shop/files/PE2-BB33620-OC_IVO_C.jpg?v=1771256719&amp;width=1000" alt="Newborn Bamboo Ocean Sleep Bag" data-fallback="i-onesie">
+          <span class="card-badge">Sleep</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780274039682" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780274039682" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Newborn Bamboo Ocean Sleep Bag</h3>
+          <p class="card-desc">Size: Newborn</p>
+          <div class="card-meta">
+            <span class="price">$46 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Clément</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://clement.ca/en/collections/baby-clothing-sleeping-bags/products/night-bag-newborn-bamb-ocean-pe2-bb33620-oc" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780274039682">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780274272568">
+        <div class="card-img">
+          <img src="https://clement.ca/cdn/shop/files/CCO-SFM6001_BLE_A.jpg?v=1763414117&amp;width=1000" alt="Sleep Bag Newborn Bunny" data-fallback="i-onesie">
+          <span class="card-badge">Sleep</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780274272568" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780274272568" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Sleep Bag Newborn Bunny</h3>
+          <p class="card-desc">Size: Newborn</p>
+          <div class="card-meta">
+            <span class="price">$54 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Clément</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://clement.ca/en/products/sleep-bag-newborn-bunny-cco-sfm6001" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780274272568">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780274536483">
+        <div class="card-img">
+          <img src="https://www.billielekid.com/cdn/shop/files/ensemble_blanc_petit_bateau_A0F17_boutique_billie_le_kid_1_54c543f7-31a1-48e5-b7c5-fea0b30e23a3.png?v=1773515470&amp;width=800" alt="Petit Bateau 2-piece Set Cotton/Linen 3 months" data-fallback="i-onesie">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780274536483" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780274536483" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Petit Bateau 2-piece Set Cotton/Linen 3 months</h3>
+          <p class="card-desc">2-piece baby set in cotton/linen with embroidered detail. Size: 3 months.</p>
+          <div class="card-meta">
+            <span class="price">$96 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Billie Le Kid</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www.billielekid.com/en/products/petit-bateau-ensemble-2-pieces-bebe-en-coton-lin-detail-brode" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780274536483">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780270847399">
+        <div class="card-img">
+          <img src="https://snugglebugz.ca/cdn/shop/files/Grey-Tub-1.jpg?v=1689693654&amp;width=600" alt="Baby Bathtub Grey Color" data-fallback="i-bath">
           <span class="card-badge">Nursery</span>
           
           <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1784568663330" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1784568663330" title="Delete">×</button>
+            <button class="icon-btn" data-edit="ca-1780270847399" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780270847399" title="Delete">×</button>
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Plaid en laine Beige</h3>
-          <p class="card-desc">Plaid en laine Beige pour chambre bébé</p>
+          <h3 class="card-title">Baby Bathtub Grey Color</h3>
+          <p class="card-desc">Skip Hop versatile bathtub grows with baby through three stages and is the only baby bathtub you'll ever need.</p>
           <div class="card-meta">
-            <span class="price">40 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">H&amp;M</span>
+            <span class="price">$60 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Snuggle Bugz</span>
           </div>
         </div>
         <div class="card-actions">
-          <a class="btn" href="https://www2.hm.com/fr_fr/productpage.1293608001.html" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" data-reserve="fr-1784568663330">Reserve</button>
+          <a class="btn" href="https://snugglebugz.ca/products/skip-hop-moby-smart-sling-3-stage-bathtub?option_values=370800296215" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780270847399">Reserve</button>
         </div>
       </article>
     
-      <article class="card " data-id="fr-1784569022378">
+      <article class="card " data-id="ca-1780271264249">
         <div class="card-img">
-          <img src="https://image.hm.com/assets/hm/b2/5b/b25b9a95cf23b536be3b38ec6b57d2c03ef8c073.jpg?imwidth=2160" alt="Ensemble de 2 Hochets - Blanc-Lapin et Blanc Agneau" data-fallback="i-default">
-          <span class="card-badge">Nursery</span>
-          
-          <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1784569022378" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1784569022378" title="Delete">×</button>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Ensemble de 2 Hochets - Blanc-Lapin et Blanc Agneau</h3>
-          <p class="card-desc">Ensemble de 2 Hochets - Blanc-Lapin et Blanc Agneau - 4 chacun</p>
-          <div class="card-meta">
-            <span class="price">8 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">H&amp;M</span>
-          </div>
-        </div>
-        <div class="card-actions">
-          <a class="btn" href="https://www2.hm.com/fr_fr/productpage.1186047045.html" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" data-reserve="fr-1784569022378">Reserve</button>
-        </div>
-      </article>
-    
-      <article class="card reserved" data-id="fr-1780275189507">
-        <div class="card-img">
-          <img src="https://www.petit-bateau.fr/dw/image/v2/BCKL_PRD/on/demandware.static/-/Sites-PB_master/default/dw64a9f086/PB/A0EZ301J1.jpg?sw=1390&amp;sh=1622&amp;sm=fit" alt="Ensemble 2 pièces bébé coton rayé brodé 12 mois" data-fallback="i-onesie">
-          <span class="card-badge">Clothing</span>
-          <span class="card-reserved-tag">Reserved</span>
-          <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1780275189507" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1780275189507" title="Delete">×</button>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Ensemble 2 pièces bébé coton rayé brodé 12 mois</h3>
-          <p class="card-desc">Ensemble 2 pièces en coton rayé avec détails brodés. Taille: 12 mois (74 cm).</p>
-          <div class="card-meta">
-            <span class="price">50 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">Petit Bateau</span>
-          </div>
-        </div>
-        <div class="card-actions">
-          <a class="btn" href="https://www.petit-bateau.fr/bebe/vetements/ensemble-combicourte-salopette/ensemble-2-pieces-bebe-en-coton-raye-et-details-brodes-marshmallow-smoking/A0EZ301.html" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" disabled="">Already reserved</button>
-        </div>
-      </article>
-    
-      <article class="card reserved" data-id="fr-1780625666006">
-        <div class="card-img">
-          <img src="https://www.jacadi.fr/medias/product-2044449-970-JH.jpg?context=bWFzdGVyfGltYWdlc3wyMzQ0MDB8aW1hZ2UvanBlZ3xhREkwTDJnM09TOHhNREl5TmpZM05EUTVPVFl4TkM5d2NtOWtkV04wWHpJd05EUTBORGxmT1Rjd1gwcElMbXB3Wnd8ZWVlYjVmNTY2YWE5MDhhNWMwNGRjNmQyZDRjMDJmOTg5NWU0NThmYjk2MDYwYzBkNjBmYjhmZmU0Mzk0MzZmNw" alt="Pyjama bébé garçon en coton interlock - Jacadi - 12 mois" data-fallback="i-default">
-          <span class="card-badge">Clothing</span>
-          <span class="card-reserved-tag">Reserved</span>
-          <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1780625666006" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1780625666006" title="Delete">×</button>
-          </div>
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Pyjama bébé garçon en coton interlock - Jacadi - 12 mois</h3>
-          <p class="card-desc">12 mois - Pyjama bébé garçon en coton biologique interlock- Col en popeline- Ouverture par pressions invisibles devant</p>
-          <div class="card-meta">
-            <span class="price">35 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">Jacadi</span>
-          </div>
-        </div>
-        <div class="card-actions">
-          <a class="btn" href="https://www.jacadi.fr/bebe/naissance/pyjama/Pyjama-bebe-garcon-en-coton-interlock/p/2044449_970" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" disabled="">Already reserved</button>
-        </div>
-      </article>
-    
-      <article class="card reserved" data-id="fr-1780626174083">
-        <div class="card-img">
-          <img src="https://www.jacadi.fr/medias/product-2045632-152-JH.jpg?context=bWFzdGVyfGltYWdlc3w1NzcwNDN8aW1hZ2UvanBlZ3xhR1ExTDJobU1DOHhNREk1TkRZNU16UXlPVEkzT0M5d2NtOWtkV04wWHpJd05EVTJNekpmTVRVeVgwcElMbXB3Wnd8ZmYxZGJjNGZmOWMwNmRhNmEzZmU3NDg1ZDlkNmFhNjc4YTdlNzk2NzQyMDJhODRlMzFiMDhjNTE5ZDM0OWJkNQ" alt="Peignoir de bain bébé en coton éponge - Jacadi" data-fallback="i-default">
+          <img src="https://m.media-amazon.com/images/I/61TNnn2BXcL._SL1500_.jpg" alt="Duck Baby Bath Thermometer" data-fallback="i-bath">
           <span class="card-badge">Bath</span>
-          <span class="card-reserved-tag">Reserved</span>
+          
           <div class="admin-card-actions">
-            <button class="icon-btn" data-edit="fr-1780626174083" title="Edit">✎</button>
-            <button class="icon-btn danger" data-delete="fr-1780626174083" title="Delete">×</button>
+            <button class="icon-btn" data-edit="ca-1780271264249" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780271264249" title="Delete">×</button>
           </div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Peignoir de bain bébé en coton éponge - Jacadi</h3>
-          <p class="card-desc">Peignoir de bain en éponge 100 % coton - Capuche intégrée- Ouverture pressionnée- Poches plaquées- Finitions biais blancs en coton- Taille 1/2 ans</p>
+          <h3 class="card-title">Duck Baby Bath Thermometer</h3>
+          <p class="card-desc">Dreambaby room and bath thermometer shaped like a duck.</p>
           <div class="card-meta">
-            <span class="price">55 €</span>
-            <span style="color:var(--ink-mute); font-size:13px;">Jacadi</span>
+            <span class="price">$17 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Amazon</span>
           </div>
         </div>
         <div class="card-actions">
-          <a class="btn" href="https://www.jacadi.fr/puericulture/bain/bain/Peignoir-de-bain-bebe-en-coton-eponge/p/2045632_152" target="_blank" rel="noopener">View →</a>
-          <button class="btn btn-primary" disabled="">Already reserved</button>
+          <a class="btn" href="https://www.amazon.ca/Dreambaby-L321-Room-Bath-Thermometer/dp/B00AIRTNVW" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780271264249">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780626372363">
+        <div class="card-img">
+          <img src="https://i.etsystatic.com/42037583/r/il/6405ee/6808592101/il_1588xN.6808592101_eh3y.jpg" alt="Newborn Boy Knitted Outfit - Horse White Blue" data-fallback="i-default">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780626372363" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780626372363" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Newborn Boy Knitted Outfit - Horse White Blue</h3>
+          <p class="card-desc">Newborn Boy Knitted Outfit - Horse White Blue</p>
+          <div class="card-meta">
+            <span class="price">$105 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Etsy</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www.etsy.com/ca/listing/1896891743/going-home-newborn-boy-first-outfit?ls=r&amp;ref=landingpage_similar_listing_bot-1&amp;sts=1&amp;content_source=4a923ac0e406e95c1817364e0da24bfa%253ALT4580f3cf35e213d6757e0fa6d300df199557b80a&amp;logging_key=4a923ac0e406e95c1817364e0da24bfa%3ALT4580f3cf35e213d6757e0fa6d300df199557b80a&amp;listing_id=1896891743&amp;listing_slug=going-home-newborn-boy-first-outfit&amp;variation0=6241803102&amp;variation1=5798491816" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780626372363">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780627040442">
+        <div class="card-img">
+          <img src="https://i.etsystatic.com/42790786/r/il/45c6f3/4866731969/il_1588xN.4866731969_gdqz.jpg" alt="Medium size - Crochet Goose" data-fallback="i-default">
+          <span class="card-badge">Nursery</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780627040442" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780627040442" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Medium size - Crochet Goose</h3>
+          <p class="card-desc">Crochet Goose - Medium size</p>
+          <div class="card-meta">
+            <span class="price">$108 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">Etsy</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www.etsy.com/ca/listing/4514446081/crochet-sleeping-goose-toy-handmade?ls=s&amp;ga_order=most_relevant&amp;ga_search_type=all&amp;ga_view_type=gallery&amp;ga_search_query=crochet+goose&amp;ref=sr_gallery-1-3&amp;sr_prefetch=1&amp;pf_from=search&amp;pro=1&amp;sts=1&amp;content_source=062ecae5-298b-4c0a-8446-f6221f859fca%253ALTcf59bba09a6a36449ebda09afcf13ab102bc6523&amp;organic_search_click=1&amp;logging_key=062ecae5-298b-4c0a-8446-f6221f859fca%3ALTcf59bba09a6a36449ebda09afcf13ab102bc6523&amp;variation1=6677253742&amp;variation0=6677253744" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780627040442">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780628599309">
+        <div class="card-img">
+          <img src="https://image.hm.com/assets/hm/1d/c3/1dc3d63caf44ea02ec1cf693289cc6c7e87d8dac.jpg?imwidth=2160" alt="6-9M - Peter Rabbit - 2 Pieces Cotton Set" data-fallback="i-default">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780628599309" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780628599309" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">6-9M - Peter Rabbit - 2 Pieces Cotton Set</h3>
+          <p class="card-desc">Size 6-9M - Peter Rabbit - 2 Pieces Cotton Set</p>
+          <div class="card-meta">
+            <span class="price">$30 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">H&amp;M</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www2.hm.com/en_ca/productpage.1324880001.html?srsltid=AfmBOoph3cEKVvgzwv8IvyK6cWY1Ugq0S0EFwOLsqlD4RwjctrD6bBLu" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780628599309">Reserve</button>
+        </div>
+      </article>
+    
+      <article class="card " data-id="ca-1780628788010">
+        <div class="card-img">
+          <img src="https://image.hm.com/assets/hm/c3/35/c3356c0d22ee3312e24aef99caab40f576baf499.jpg?imwidth=2160" alt="9-12M - White Sun Hat" data-fallback="i-default">
+          <span class="card-badge">Clothing</span>
+          
+          <div class="admin-card-actions">
+            <button class="icon-btn" data-edit="ca-1780628788010" title="Edit">✎</button>
+            <button class="icon-btn danger" data-delete="ca-1780628788010" title="Delete">×</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">9-12M - White Sun Hat</h3>
+          <p class="card-desc">9-12M - White Sun Hat</p>
+          <div class="card-meta">
+            <span class="price">$10 CAD</span>
+            <span style="color:var(--ink-mute); font-size:13px;">H&amp;M</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a class="btn" href="https://www2.hm.com/en_ca/productpage.1201013008.html" target="_blank" rel="noopener">View →</a>
+          <button class="btn btn-primary" data-reserve="ca-1780628788010">Reserve</button>
         </div>
       </article>
     </div>
@@ -832,13 +998,13 @@ body.admin #topAdmin { display: inline; }
 <div class="modal-bg" id="editModalBg">
   <div class="modal lg" role="dialog" aria-modal="true">
     <div class="modal-header">
-      <h2 class="serif" id="editTitle">Edit item</h2>
+      <h2 class="serif" id="editTitle">Add item</h2>
       <p>This stays on your device until you click "Export updated HTML" and re-upload.</p>
       <button class="modal-close" aria-label="Close" data-close="">×</button>
     </div>
     <div class="modal-body">
       <form id="editForm">
-        <input type="hidden" id="editId" value="ca-1780272130370">
+        <input type="hidden" id="editId" value="">
 
         <!-- Auto-fill from URL -->
         <div class="autofill" id="autofillBlock">
@@ -854,7 +1020,7 @@ body.admin #topAdmin { display: inline; }
             <input id="autofillUrl" type="url" placeholder="https://www.amazon.ca/dp/B07VSQRG2N">
             <button type="button" class="btn btn-primary" id="autofillBtn">Fetch</button>
           </div>
-          <div class="autofill-status" id="autofillStatus"></div>
+          <div class="autofill-status err" id="autofillStatus">Couldn't read that page (The request has been not processed. See the errors above to know why.). Fill in the fields manually below.</div>
         </div>
 
         <label>Name *</label>
@@ -920,7 +1086,7 @@ body.admin #topAdmin { display: inline; }
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn" id="editDelete" style="color: rgb(185, 74, 74); border-color: rgb(232, 200, 200); display: inline-flex;">Delete</button>
+          <button type="button" class="btn" id="editDelete" style="color: rgb(185, 74, 74); border-color: rgb(232, 200, 200); display: none;">Delete</button>
           <button type="button" class="btn" data-close="">Cancel</button>
           <button type="submit" class="btn btn-primary">Save</button>
         </div>
@@ -952,7 +1118,7 @@ body.admin #topAdmin { display: inline; }
   </div>
 </div>
 
-<div class="toast" id="toast">Item removed.</div>
+<div class="toast" id="toast">Item added.</div>
 
 <!-- ==============================================================
      ICON LIBRARY (for items without an image URL)
@@ -1178,7 +1344,7 @@ const SEED_ITEMS = [
     "store": "Hatched Baby",
     "link": "https://www.hatchedbaby.ca/products/tiny-collection-henry-the-bunny",
     "image": "https://www.hatchedbaby.ca/cdn/shop/files/Tiny_Henry.webp?v=1750792994&width=1160",
-    "icon": "i-default",
+    "icon": "i-toy",
     "reserved": false,
     "thanked": false
   },
@@ -1273,6 +1439,36 @@ const SEED_ITEMS = [
     "thanked": false
   },
   {
+    "id": "ca-1780270847399",
+    "region": "CA",
+    "category": "Nursery",
+    "name": "Baby Bathtub Grey Color",
+    "description": "Skip Hop versatile bathtub grows with baby through three stages and is the only baby bathtub you'll ever need.",
+    "price": 59.99,
+    "currency": "CAD",
+    "store": "Snuggle Bugz",
+    "link": "https://snugglebugz.ca/products/skip-hop-moby-smart-sling-3-stage-bathtub?option_values=370800296215",
+    "image": "https://snugglebugz.ca/cdn/shop/files/Grey-Tub-1.jpg?v=1689693654&width=600",
+    "icon": "i-bath",
+    "reserved": true,
+    "thanked": false
+  },
+  {
+    "id": "ca-1780271264249",
+    "region": "CA",
+    "category": "Bath",
+    "name": "Duck Baby Bath Thermometer",
+    "description": "Dreambaby room and bath thermometer shaped like a duck.",
+    "price": 16.99,
+    "currency": "CAD",
+    "store": "Amazon",
+    "link": "https://www.amazon.ca/Dreambaby-L321-Room-Bath-Thermometer/dp/B00AIRTNVW",
+    "image": "https://m.media-amazon.com/images/I/61TNnn2BXcL._SL1500_.jpg",
+    "icon": "i-bath",
+    "reserved": true,
+    "thanked": false
+  },
+  {
     "id": "fr-1780275189507",
     "region": "FR",
     "category": "Clothing",
@@ -1287,36 +1483,6 @@ const SEED_ITEMS = [
     "reserved": true,
     "thanked": false
   },
-    {
-    "id": "fr-1780625394278",
-    "region": "FR",
-    "category": "Clothing",
-    "name": "Body bébé garçon marinière - Jacadi - 12 mois",
-    "description": "Taille 12 mois - Body marinière bébé en coton biologique- Manches courtes- Imprimé Jacadi Paris sur poitrine- Ouverture pressionnée à l’entrejambe",
-    "price": 25,
-    "currency": "EUR",
-    "store": "Jacadi",
-    "link": "https://www.jacadi.fr/bebe/naissance/body/Body-bebe-garcon-mariniere/p/2044673_792",
-    "image": "https://www.jacadi.fr/medias/product-2044673-792-JH.jpg?context=bWFzdGVyfGltYWdlc3w1MDcyNzB8aW1hZ2UvanBlZ3xhREU1TDJnME55OHhNRE16TkRJek1qZ3pPREUzTkM5d2NtOWtkV04wWHpJd05EUTJOek5mTnpreVgwcElMbXB3Wnd8Njc0MzgzMmIwNWQxYzFiNTNmODVmMGVmM2VlMDJmNTAyODQ0MmNjYjc0ZmI1MDk4YmI5ODVjNTY1ZTBlMGIxNg",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-    {
-    "id": "fr-1780625490143",
-    "region": "FR",
-    "category": "Clothing",
-    "name": "Pyjama bébé garçon en interlock - Jacadi - 6 mois",
-    "description": "Taille 6 mois - Pyjama bébé garçon en coton biologique- Imprimé vichy- Col en popeline blanche- Ouverture pressionnée invisible devant - Jolie idée de cadeau de naissance à offrir ou à s’offrir",
-    "price": 35,
-    "currency": "EUR",
-    "store": "Jacadi",
-    "link": "https://www.jacadi.fr/bebe/bebe-garcon/dors-bien/Pyjama-bebe-garcon-en-interlock/p/2037333_792",
-    "image": "https://www.jacadi.fr/medias/product-2037333-792-JH.jpg?context=bWFzdGVyfGltYWdlc3wzNzMwOTN8aW1hZ2UvanBlZ3xhRGsyTDJoalppODVPRFkxTURreU5qazBNRFEyTDNCeWIyUjFZM1JmTWpBek56TXpNMTgzT1RKZlNrZ3VhbkJufDNiM2JlZTBjMzZmNGY2ODBkN2QxMGY4NDc4YTdhNGNlODk3MzI0NWMwZmQ1MTg0NDE1OTU4YTA3ZTgwYjVkZTA",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
   {
     "id": "fr-1780625666006",
     "region": "FR",
@@ -1329,7 +1495,7 @@ const SEED_ITEMS = [
     "link": "https://www.jacadi.fr/bebe/naissance/pyjama/Pyjama-bebe-garcon-en-coton-interlock/p/2044449_970",
     "image": "https://www.jacadi.fr/medias/product-2044449-970-JH.jpg?context=bWFzdGVyfGltYWdlc3wyMzQ0MDB8aW1hZ2UvanBlZ3xhREkwTDJnM09TOHhNREl5TmpZM05EUTVPVFl4TkM5d2NtOWtkV04wWHpJd05EUTBORGxmT1Rjd1gwcElMbXB3Wnd8ZWVlYjVmNTY2YWE5MDhhNWMwNGRjNmQyZDRjMDJmOTg5NWU0NThmYjk2MDYwYzBkNjBmYjhmZmU0Mzk0MzZmNw",
     "icon": "i-default",
-    "reserved": true,
+    "reserved": false,
     "thanked": false
   },
   {
@@ -1344,7 +1510,7 @@ const SEED_ITEMS = [
     "link": "https://www.jacadi.fr/puericulture/bain/bain/Peignoir-de-bain-bebe-en-coton-eponge/p/2045632_152",
     "image": "https://www.jacadi.fr/medias/product-2045632-152-JH.jpg?context=bWFzdGVyfGltYWdlc3w1NzcwNDN8aW1hZ2UvanBlZ3xhR1ExTDJobU1DOHhNREk1TkRZNU16UXlPVEkzT0M5d2NtOWtkV04wWHpJd05EVTJNekpmTVRVeVgwcElMbXB3Wnd8ZmYxZGJjNGZmOWMwNmRhNmEzZmU3NDg1ZDlkNmFhNjc4YTdlNzk2NzQyMDJhODRlMzFiMDhjNTE5ZDM0OWJkNQ",
     "icon": "i-default",
-    "reserved": true,
+    "reserved": false,
     "thanked": false
   },
   {
@@ -1377,21 +1543,6 @@ const SEED_ITEMS = [
     "reserved": false,
     "thanked": false
   },
-    {
-    "id": "ca-1780628788010",
-    "region": "CA",
-    "category": "Clothing",
-    "name": "9-12M - White Sun Hat",
-    "description": "9-12M - White Sun Hat",
-    "price": 9.99,
-    "currency": "CAD",
-    "store": "H&M",
-    "link": "https://www2.hm.com/en_ca/productpage.1201013008.html",
-    "image": "https://image.hm.com/assets/hm/c3/35/c3356c0d22ee3312e24aef99caab40f576baf499.jpg?imwidth=2160",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
   {
     "id": "ca-1780628599309",
     "region": "CA",
@@ -1405,171 +1556,6 @@ const SEED_ITEMS = [
     "image": "https://image.hm.com/assets/hm/1d/c3/1dc3d63caf44ea02ec1cf693289cc6c7e87d8dac.jpg?imwidth=2160",
     "icon": "i-default",
     "reserved": true,
-    "thanked": false
-  },
-  {
-    "id": "ca-1781472719872",
-    "region": "CA",
-    "category": "Play",
-    "name": "Blissful Diary Baby Play Gym & Activity Mat",
-    "description": "Blissful Diary Baby Play Gym & Activity Mat, 5 Developmental Zones Wooden Tummy Time Mat with 6 Detachable Sensory Toys for Motor Skills & Sensory Development, Baby Essentials Shower Gift",
-    "price": 129.99,
-    "currency": "CAD",
-    "store": "Amazon.ca",
-    "link": "https://www.amazon.ca/Blissful-Diary-Developmental-Detachable-Development/dp/B0DGXCDWX6/ref=asc_df_B0DGXCDWX6?mcid=e609187953823a5590ca986bac64514d&tag=googleshopc0c-20&linkCode=df0&hvadid=706828593119&hvpos=&hvnetw=g&hvrand=16639003696135474937&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9000609&hvtargid=pla-2373955312559&hvocijid=16639003696135474937-B0DGXCDWX6-&hvexpln=0&gad_source=1&th=1",
-    "image": "https://m.media-amazon.com/images/I/71jhucHDUtL._AC_SL1500_.jpg",
-    "icon": "i-default",
-    "reserved": true,
-    "thanked": false
-  },
-  {
-    "id": "ca-1781472958700",
-    "region": "CA",
-    "category": "Play",
-    "name": "Storm Color - Nouka Wood and Silicone Tower",
-    "description": "Storm Color - Nouka Wood and Silicone Tower for Play Time",
-    "price": 34.99,
-    "currency": "CAD",
-    "store": "Snuggle Bugz",
-    "link": "https://snugglebugz.ca/products/nouka-wood-silicone-stacker?variant=45521498439959",
-    "image": "https://snugglebugz.ca/cdn/shop/files/NOU-ST2226-Nouka-Silicone-Stacking-Sand-WEB_281_29.jpg?v=1689008449&width=800",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-  {
-    "id": "ca-1781473903049",
-    "region": "CA",
-    "category": "Sleep",
-    "name": "Comfyer BM01 7″ HD Baby Monitor - 1 camera",
-    "description": "Comfyer BM01 7″ HD Baby Monitor with Camera and Audio, 13 Hrs 6000mAh Battery Runs 2 Days in VOX Mode, Auto Night Vision, Hack Proof, Remote PTZ : Amazon.ca: Baby",
-    "price": 127.99,
-    "currency": "CAD",
-    "store": "Amazon",
-    "link": "https://www.amazon.ca/Comfyer-Monitor-Camera-4000mAh-Battery/dp/B0D5XW5N3N",
-    "image": "https://m.media-amazon.com/images/I/71uq0h1F2xL._AC_SL1500_.jpg",
-    "icon": "i-default",
-    "reserved": true,
-    "thanked": false
-  },
-  {
-    "id": "ca-1781474552175",
-    "region": "CA",
-    "category": "Clothing",
-    "name": "Ivory color - 6 months - Sheep Terry Short Sleeve Layering Set",
-    "description": "Size 6 months - Style: Ivory Sheep - Terry Short Sleeve Layering Set",
-    "price": 24,
-    "currency": "CAD",
-    "store": "Carter's",
-    "link": "https://www.cartersoshkosh.ca/en_CA/carters-baby-boy-sets/197233970757.html?cm_mmc=pla.car.ca.visitation.Carters+-+CA+-+Shopping+-+PMAX+-+Catch-All.20322335502...google..pmax&gclsrc=aw.ds&gad_source=1&gad_campaignid=20331778315&gbraid=0AAAAADzWyhyY5k4Q1Z4U8cJOUFpKm4NIR&gclid=Cj0KCQjwornRBhCrARIsAON5exHOa_ew5OlTFfpbsNxKdkxz5aBZy3KK_Pdzq9Gh92DJ3GD_YQsyeh4aApLyEALw_wcB",
-    "image": "https://www.cartersoshkosh.ca/on/demandware.static/-/Sites-carters_master_catalog/default/dw941e8c0c/productimages/1V418810.jpg",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-  {
-    "id": "ca-1780270847399",
-    "region": "CA",
-    "category": "Nursery",
-    "name": "Baby Bathtub Grey Color",
-    "description": "Skip Hop versatile bathtub grows with baby through three stages and is the only baby bathtub you'll ever need.",
-    "price": 59.99,
-    "currency": "CAD",
-    "store": "Snuggle Bugz",
-    "link": "https://snugglebugz.ca/products/skip-hop-moby-smart-sling-3-stage-bathtub?option_values=370800296215",
-    "image": "https://snugglebugz.ca/cdn/shop/files/Grey-Tub-1.jpg?v=1689693654&width=600",
-    "icon": "i-bath",
-    "reserved": true,
-    "thanked": false
-  },
-  {
-    "id": "ca-1780271264249",
-    "region": "CA",
-    "category": "Bath",
-    "name": "Duck Baby Bath Thermometer",
-    "description": "Dreambaby room and bath thermometer shaped like a duck.",
-    "price": 16.99,
-    "currency": "CAD",
-    "store": "Amazon",
-    "link": "https://www.amazon.ca/Dreambaby-L321-Room-Bath-Thermometer/dp/B00AIRTNVW",
-    "image": "https://m.media-amazon.com/images/I/61TNnn2BXcL._SL1500_.jpg",
-    "icon": "i-bath",
-    "reserved": true,
-    "thanked": false
-  },
-  {
-    "id": "fr-1784568261993",
-    "region": "FR",
-    "category": "Clothing",
-    "name": "12M - Salopette Court Bébé Vichy - Cyrillus",
-    "description": "12M - Salopette Court Bébé Vichy - Cyrillus",
-    "price": 22.14,
-    "currency": "EUR",
-    "store": "Cyrillus",
-    "link": "https://cyrillus.fr/products/combi-salopette-salopette-vichy-vert_6191?nosto_source=cmp&nosto=207927945",
-    "image": "https://cyrillus.fr/cdn/shop/files/70217_0623_C027_PO_FA_F1XX.jpg?v=1766039430&width=1000",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-  {
-    "id": "fr-1784568339975",
-    "region": "FR",
-    "category": "Clothing",
-    "name": "6M - Pull en laine merino Bébé",
-    "description": "Taille 6 mois - Pull en laine merino Bébé",
-    "price": 35,
-    "currency": "EUR",
-    "store": "Cyrillus",
-    "link": "https://cyrillus.fr/products/pull-pull-bleu_5769?nosto_source=cmp&nosto=207927945",
-    "image": "https://cyrillus.fr/cdn/shop/files/70211_0744_2031_NM_FA_F1XX.jpg?v=1779773493&width=1000",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-  {
-    "id": "fr-1784568436358",
-    "region": "CA",
-    "category": "Sleep",
-    "name": "Couverture pour bébé en tricot torsadé",
-    "description": "Couverture pour bébé en tricot torsadé",
-    "price": 49.99,
-    "currency": "CAD",
-    "store": "H&M",
-    "link": "https://www2.hm.com/en_ca/productpage.1342555001.html?srsltid=AfmBOopHau0ZA_4Lbdf8S0jtpA07QOG2Cxl2wy4qJYItwQ6vn2KK7D1sxAQ",
-    "image": "https://image.hm.com/assets/hm/f2/14/f214cff92546150c0aa28ca2d944df3c3646eadc.jpg?imwidth=2160",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-  {
-    "id": "fr-1784568663330",
-    "region": "FR",
-    "category": "Nursery",
-    "name": "Plaid en laine Beige",
-    "description": "Plaid en laine Beige pour chambre bébé",
-    "price": 39.99,
-    "currency": "EUR",
-    "store": "H&M",
-    "link": "https://www2.hm.com/fr_fr/productpage.1293608001.html",
-    "image": "https://image.hm.com/assets/hm/ed/4c/ed4c0e099d4ebe12d160ec22cb3f58b03d74eef6.jpg?imwidth=2160",
-    "icon": "i-default",
-    "reserved": false,
-    "thanked": false
-  },
-  {
-    "id": "fr-1784569022378",
-    "region": "FR",
-    "category": "Nursery",
-    "name": "Ensemble de 2 Hochets - Blanc-Lapin et Blanc Agneau",
-    "description": "Ensemble de 2 Hochets - Blanc-Lapin et Blanc Agneau - 4 chacun",
-    "price": 8,
-    "currency": "EUR",
-    "store": "H&M",
-    "link": "https://www2.hm.com/fr_fr/productpage.1186047045.html",
-    "image": "https://image.hm.com/assets/hm/b2/5b/b25b9a95cf23b536be3b38ec6b57d2c03ef8c073.jpg?imwidth=2160",
-    "icon": "i-default",
-    "reserved": false,
     "thanked": false
   }
 ];
@@ -1600,7 +1586,7 @@ function lsSet(key, value) {
 }
 
 function loadItems() {
-  // Admins see their localStorage drafts; everyone else sees SEED_ITEMS.
+  // Visitors see SEED_ITEMS. Admins see whatever's in localStorage (their drafts).
   const stored = lsGet(LS_KEY);
   if (isAdmin && stored) {
     try { items = JSON.parse(stored); return; } catch(e) {}
@@ -1748,24 +1734,60 @@ function makeMailto(item, deliveryType) {
   let deliverySection;
   if (isFR) {
     if (deliveryType === "ship") {
-      deliverySection = `📦 Comment je l'envoie\nJe vais le commander en ligne et le faire livrer directement à :\n\n   Famille Rutyna\n   106 rue du château\n   30600 Montcalm\n   France`;
+      deliverySection =
+        `📦 Comment je l'envoie\n` +
+        `Je vais le commander en ligne et le faire livrer directement à :\n\n` +
+        `   Christina & Christophe Rutyna\n` +
+        `   57 Beaconsfield Court\n` +
+        `   Beaconsfield, H9W 5G5\n` +
+        `   Québec, Canada`;
     } else {
-      deliverySection = `🎁 Comment je l'offre\nJe vais l'acheter et l'apporter en personne.`;
+      deliverySection =
+        `🎁 Comment je l'offre\n` +
+        `Je vais l'acheter et l'apporter en personne.`;
     }
   } else {
     if (deliveryType === "ship") {
-      deliverySection = `📦 How I'll send it\nI'll order it online and have it shipped directly to:\n\n   Christina & Christophe Rutyna\n   57 Beaconsfield Court\n   Beaconsfield, H9W 5G5\n   Quebec, Canada`;
+      deliverySection =
+        `📦 How I'll send it\n` +
+        `I'll order it online and have it shipped directly to:\n\n` +
+        `   Christina & Christophe Rutyna\n` +
+        `   57 Beaconsfield Court\n` +
+        `   Beaconsfield, H9W 5G5\n` +
+        `   Quebec, Canada`;
     } else {
-      deliverySection = `🎁 How I'll give it\nI'll buy it and bring it in person.`;
+      deliverySection =
+        `🎁 How I'll give it\n` +
+        `I'll buy it and bring it in person.`;
     }
   }
 
   const body = isFR
     ? encodeURIComponent(
-        `Bonjour Christina & Christophe,\n\nFélicitations pour l'arrivée prochaine de bébé Rutyna !\n\n🛍 Cadeau choisi\n   ${item.name}\n   Prix : ${fmtPrice(item)}\n   Boutique : ${item.store || "—"}\n   Lien : ${item.link || "—"}\n\n${deliverySection}\n\n✍️ Mon prénom / nom\n[Merci de compléter votre nom ici]\n\nJe vous souhaite beaucoup de bonheur. ♡`
+        `Bonjour Christina & Christophe,\n\n` +
+        `Félicitations pour votre petit bout de chou ! Je souhaite réserver le cadeau suivant sur votre liste de naissance :\n\n` +
+        `🛍 Cadeau choisi\n` +
+        `   ${item.name}\n` +
+        `   Prix :     ${fmtPrice(item)}\n` +
+        `   Boutique : ${item.store || "—"}\n` +
+        `   Lien :     ${item.link || "—"}\n\n` +
+        `${deliverySection}\n\n` +
+        `✍️ Mon prénom / nom\n` +
+        `[Merci de compléter votre nom ici]\n\n` +
+        `Je vous souhaite beaucoup de bonheur. Vivement que je rencontre le petit ! ♡`
       )
     : encodeURIComponent(
-        `Hi Christina & Christophe,\n\nCongratulations on the upcoming arrival of Baby Rutyna!\n\n🛍 Gift\n   ${item.name}\n   Price: ${fmtPrice(item)}\n   Store: ${item.store || "—"}\n   Link: ${item.link || "—"}\n\n${deliverySection}\n\n✍️ My name\n[Please fill in your name here]\n\nWishing you all so much joy. ♡`
+        `Hi Christina & Christophe,\n\n` +
+        `Congratulations on your little one! I'd love to reserve the following gift from your registry:\n\n` +
+        `🛍 Gift\n` +
+        `   ${item.name}\n` +
+        `   Price:  ${fmtPrice(item)}\n` +
+        `   Store:  ${item.store || "—"}\n` +
+        `   Link:   ${item.link || "—"}\n\n` +
+        `${deliverySection}\n\n` +
+        `✍️ My name\n` +
+        `[Please fill in your name here]\n\n` +
+        `Wishing you all so much joy. Can't wait to meet the little one! ♡`
       );
 
   return `mailto:${to}?subject=${subject}&body=${body}`;
@@ -2064,4 +2086,4 @@ checkAdminFromURL();
 
 
 
-<div data-lastpass-root="" style="position: absolute !important; top: 0px !important; left: 0px !important; height: 0px !important; width: 0px !important; display: initial !important;"></div><span data-test-id="pinterest-save-button" style="border-radius:10px !important;text-indent:12px !important;width:auto !important;height:20px !important;padding:0px 8px !important;text-align:center !important;vertical-align:middle !important;font:bold 11px / 20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important;color:rgb(255, 255, 255) !important;background:url(&quot;data:image/svg+xml;base64,PHN2ZyBpZD0ic291cmNlIiB3aWR0aD0iMTIiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxMiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNFNjAwMjMiPjwvY2lyY2xlPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTAgNkMwIDguNTYxNSAxLjYwNTUgMTAuNzQ4NSAzLjg2NSAxMS42MDlDMy44MSAxMS4xNDA1IDMuNzUxNSAxMC4zNjggMy44Nzc1IDkuODI2QzMuOTg2IDkuMzYgNC41NzggNi44NTcgNC41NzggNi44NTdDNC41NzggNi44NTcgNC4zOTk1IDYuNDk5NSA0LjM5OTUgNS45N0M0LjM5OTUgNS4xNCA0Ljg4MDUgNC41MiA1LjQ4IDQuNTJDNS45OSA0LjUyIDYuMjM2IDQuOTAyNSA2LjIzNiA1LjM2MUM2LjIzNiA1Ljg3MzUgNS45MDk1IDYuNjM5NSA1Ljc0MSA3LjM1QzUuNjAwNSA3Ljk0NDUgNi4wMzk1IDguNDI5NSA2LjYyNTUgOC40Mjk1QzcuNjg3IDguNDI5NSA4LjUwMzUgNy4zMSA4LjUwMzUgNS42OTRDOC41MDM1IDQuMjYzNSA3LjQ3NTUgMy4yNjQgNi4wMDggMy4yNjRDNC4zMDkgMy4yNjQgMy4zMTE1IDQuNTM4NSAzLjMxMTUgNS44NTZDMy4zMTE1IDYuMzY5NSAzLjUwOSA2LjkxOTUgMy43NTYgNy4yMTlDMy44MDQ1IDcuMjc4NSAzLjgxMiA3LjMzIDMuNzk3NSA3LjM5MDVDMy43NTIgNy41Nzk1IDMuNjUxIDcuOTg1IDMuNjMxNSA4LjA2OEMzLjYwNSA4LjE3NyAzLjU0NSA4LjIwMDUgMy40MzE1IDguMTQ3NUMyLjY4NTUgNy44MDA1IDIuMjE5NSA2LjcxIDIuMjE5NSA1LjgzNEMyLjIxOTUgMy45NDk1IDMuNTg4IDIuMjE5NSA2LjE2NTUgMi4yMTk1QzguMjM3NSAyLjIxOTUgOS44NDggMy42OTYgOS44NDggNS42NjlDOS44NDggNy43Mjc1IDguNTUwNSA5LjM4NDUgNi43NDg1IDkuMzg0NUM2LjE0MyA5LjM4NDUgNS41NzQ1IDkuMDY5NSA1LjM3OTUgOC42OThDNS4zNzk1IDguNjk4IDUuMDggOS44MzkgNS4wMDc1IDEwLjExOEM0Ljg2NjUgMTAuNjYgNC40NzU1IDExLjM0NiA0LjIzMyAxMS43MzU1QzQuNzkyIDExLjkwNzUgNS4zODUgMTIgNiAxMkM5LjMxMzUgMTIgMTIgOS4zMTM1IDEyIDZDMTIgMi42ODY1IDkuMzEzNSAwIDYgMEMyLjY4NjUgMCAwIDIuNjg2NSAwIDZaIiBmaWxsPSJ3aGl0ZSI+PC9wYXRoPgo8L3N2Zz4=&quot;) 4px 50% / 12px 12px no-repeat rgb(230, 0, 35) !important;position:absolute !important;opacity:1 !important;z-index:9007199254740990 !important;display:none !important;cursor:pointer !important;border:none !important;-webkit-font-smoothing:antialiased !important;top:0 !important;left:0 !important;display:none !important;top:784px !important;left:949px !important">Save</span></body></html>
+</body></html>
